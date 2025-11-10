@@ -213,7 +213,10 @@ body {
 
 /* ====== SOBRE ====== */
 .sobre {
-  background: #007bff;
+  /* Fundo de gradiente animado */
+  background: linear-gradient(270deg, #007bff, #00c6ff, #007bff, #00c6ff);
+  background-size: 400% 400%; /* Aumenta o tamanho do gradiente para permitir a animação */
+  animation: gradient-animation 15s ease infinite; /* Aplica a animação */
   color: #fff;
   padding: 80px 0;
 }
@@ -651,7 +654,7 @@ display: block;
 /* Estilos Principais (Repetidos para Cláreza) */
 
 .nossos-servicos-section {
-    background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+    background: linear-gradient(180deg, #efefef 0%, #F9FAFB 100%);
     color: #333;
     padding: 80px 20px;
     font-family: Arial, sans-serif;
@@ -1312,4 +1315,23 @@ color:  rgba(106, 114, 130, 1);
   .nav{ gap: 16px; }
   .hero-content{ gap: 32px; }
   .mulher-sorrindo{ transform: none; }
+}
+
+
+/* Estilo para a áurea de separação dos depoimentos */
+.depoimentos {
+  position: relative; /* Garante que a áurea seja posicionada em relação a esta seção */
+  padding-bottom: 100px; /* Adiciona espaço para a áurea não sobrepor o conteúdo */
+}
+
+.depoimentos-aurea {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1; /* Garante que fique acima do background, mas abaixo do conteúdo da próxima seção se necessário */
+  display: block;
+  margin: 0;
+  padding: 0;
 }
