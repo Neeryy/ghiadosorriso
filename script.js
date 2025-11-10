@@ -95,16 +95,20 @@ document.addEventListener('DOMContentLoaded', function() {
   
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href') || '';
+      // Se for "#" (Entre) não faz nada e não marca ativo
+      if (href === '#') {
+        e.preventDefault();
+        return;
+      }
       // Remove a classe 'active' de todos os links
       navLinks.forEach(nav => nav.classList.remove('active'));
-      
       // Adiciona a classe 'active' ao link clicado
       this.classList.add('active');
     });
   });
-  
-  // Detecta a seção visível e atualiza a navegação
-  const sections = document.querySelectorAll('section[id]');
+});// Detecta a seção visível e atualiza a navegação
+  const sections = document.querySelectorAll('section[id], #home');
   
   const observerNavOptions = {
     threshold: 0.3
@@ -125,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }, observerNavOptions);
   
   sections.forEach(section => navObserver.observe(section));
-});
+;
 
 // ===== HEADER SCROLL EFFECT =====
 window.addEventListener('scroll', function() {
@@ -150,22 +154,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
     
     const target = document.querySelector(href);
-    
+
+    if (href === '#home') {
+      e.preventDefault();
+      const headerHeight = document.querySelector('.header').offsetHeight || 0;
+      const top = 0;
+      window.scrollTo({ top, behavior: 'smooth' });
+      return;
+    }
+
     if (target) {
       e.preventDefault();
-      
       const headerHeight = document.querySelector('.header').offsetHeight;
       const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-      
       window.scrollTo({
         top: targetPosition,
         behavior: 'smooth'
       });
     }
   });
-});
-
-// ===== ANIMAÇÃO DOS DEPOIMENTOS (CARROSSEL INFINITO) =====
+});// ===== ANIMAÇÃO DOS DEPOIMENTOS (CARROSSEL INFINITO) =====
 document.addEventListener('DOMContentLoaded', function() {
   const depoimentosGrid = document.querySelector('.depoimentos-grid');
   
@@ -190,3 +198,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+
+// === Smooth scroll honoring header height and exact targets ===
+(function() {
+  const header = document.querySelector('.header');
+  const headerHeight = header ? header.offsetHeight : 0;
+  document.querySelectorAll('.nav a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#') { e.preventDefault(); return; }
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+})();
+
