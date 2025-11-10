@@ -20,45 +20,105 @@ body {
 
 /* ====== HEADER ====== */
 .header {
-  background: #fff;
-  padding: 20px 0%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0;
+  box-shadow: 0 2px 20px rgba(0, 123, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 4px 30px rgba(0, 123, 255, 0.15);
+  padding: 0;
 }
 
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 0px 0px 0px;
+  padding: 12px 0;
+  transition: padding 0.3s ease;
+}
+
+.header.scrolled .header-content {
+  padding: 8px 0;
 }
 
 .logo {
-  width: 248px;
-  height: 87px;
-
+  width: 160px;
+  height: auto;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 123, 255, 0.15));
 }
 
+.header.scrolled .logo {
+  width: 145px;
+  transform: scale(0.95);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 12px rgba(0, 123, 255, 0.25));
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
 .nav a {
-  color: #333;
-  padding: 0px 0px;
-  margin-left: 20px;
+  color: #2c3e50;
+  padding: 10px 18px;
+  margin: 0;
   text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-  left: 50%;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
 }
 
-.nav a.active,
+.nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav a:hover::before {
+  left: 100%;
+}
+
 .nav a:hover {
-   background: #007bff;
-  color: white;
-  padding: 6px 14px;
-  border-radius: 8px;
-
-
+  color: #007bff;
+  background: rgba(0, 123, 255, 0.08);
+  transform: translateY(-2px);
 }
 
+.nav a.active {
+  background: linear-gradient(135deg, #007bff 0%, #0099ff 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.nav a.active:hover {
+  background: linear-gradient(135deg, #0066cc 0%, #0088ee 100%);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.nav a strong {
+  font-weight: 700;
+}
 
 /* ===== HERO ===== */
 
@@ -150,7 +210,7 @@ body {
   flex: 1;
   position: relative;
   display: flex;
-  align-items: flex-end; /* faz a aura e a mulher se alinhar na parte de baixo */
+  align-items: flex-end;
   justify-content: center;
   min-width: 400px;
   height: 900px;
@@ -161,14 +221,14 @@ body {
 /* aura azul – decorativo */
 .hero-decorative {
   position: absolute;
-  bottom: 50px; /* fixa a aura na parte de baixo */
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
-  width: 1000%; /* cobre mais que a largura da mulher */
+  width: 1000%;
   height: auto;
-  z-index: 1; /* atrás da mulher */
+  z-index: 1;
   object-fit: cover;
-  opacity: 0.9; /* leve transparência */
+  opacity: 0.9;
   height: 350px;
 }
 
@@ -179,7 +239,7 @@ body {
   z-index: 2;
   width: 1344px;
   height: 896px;
-  transform: translate(-50px, 60px); /* move para a esquerda e abaixa um pouco */
+  transform: translate(-50px, 60px);
 
 }
 
@@ -394,11 +454,11 @@ body {
    margin: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%; /* cobre mais que a largura da mulher */
+  width: 100%;
   height: 200px;
-  z-index: 1; /* atrás da mulher */
+  z-index: 1;
   object-fit: cover;
-  opacity: 0.9; /* leve transparência */
+  opacity: 0.9;
   height: 136px;
 }
 
@@ -407,8 +467,6 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
-  /* text-align: center; Removido para permitir alinhamento à esquerda */
- 
 }
 
 .beneficio-card {
@@ -417,7 +475,7 @@ body {
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  text-align: left; /* Alinha o conteúdo do card à esquerda */
+  text-align: left;
 }
 
 .beneficio-card-header {
@@ -428,25 +486,24 @@ body {
 }
 
 .beneficio-card-header img {
-  width: 50px; /* Ajuste o tamanho do ícone conforme necessário */
+  width: 50px;
   height: 50px;
-  flex-shrink: 0; /* Impede que o ícone encolha */
-  flex: autom: 0 0 auto; /* Garante que o ícone mantenha seu tamanho */
-  justify-content: left; /* Alinha o ícone à esquerda */
+  flex-shrink: 0;
+  flex: autom: 0 0 auto;
+  justify-content: left;
 }
 
 .beneficio-card-header h4 {
-  margin: 0; /* Remove margem padrão do h4 */
+  margin: 0;
   font-size: 16px;
 }
 
 .beneficio-card p {
-  text-align: left; /* Alinha a descrição à esquerda */
+  text-align: left;
   font-size: 18px;
 }
 
 /* ====== DENTISTAS ====== */
-/* ===== Seção Dentistas ===== */
 .dentistas {
   padding: 80px 0;
 }
@@ -555,9 +612,7 @@ body {
     height: 747px;
 }
 
-/* Imagem preenchendo toda a div */
 .dentistas-image img {
-
     height: 100%;
     border-radius: 50px;
     object-fit: cover;
@@ -578,7 +633,6 @@ display: block;
 }
 
 /* ====== EMPRESAS ====== */
-/* ===== SEÇÃO EMPRESAS ===== */
 .empresas {
   background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
   padding: 100px 0 0;
@@ -595,7 +649,6 @@ display: block;
   padding: 0 40px;
 }
 
-/* ===== TEXTO À DIREITA ===== */
 .empresas-text {
   flex: 1;
   max-width: 600px;
@@ -617,7 +670,6 @@ display: block;
   padding: 0;
 }
 
-/* ===== BOTÃO ===== */
 .btn-empresa {
   display: inline-block;
   padding: 12px 28px;
@@ -631,9 +683,9 @@ display: block;
 
 .btn-empresa:hover {
   box-shadow: 0 6px 18px rgba(0, 123, 255, 0.3);
+  filter: brightness(1.1);
 }
 
-/* ===== Forma inferior ===== */
 .wave-bottom {
   position: absolute;
   bottom: 0;
@@ -649,29 +701,6 @@ display: block;
   height: 100px;
 }
 
-/* ===== RESPONSIVO ===== */
-@media (max-width: 992px) {
-  .empresas-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .empresas-card {
-    width: 100%;
-  }
-
-  .empresas-text {
-    margin-top: 40px;
-  }
-
-  .empresas-lista li {
-    justify-content: center;
-    text-align: left;
-  }
-}
-
-
-/* ===== Lista de itens ===== */
 .empresas-lista {
   list-style: none;
   padding: 0;
@@ -717,11 +746,11 @@ display: block;
    margin: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%; /* cobre mais que a largura da mulher */
+  width: 100%;
   height: 200px;
-  z-index: 1; /* atrás da mulher */
+  z-index: 1;
   object-fit: cover;
-  opacity: 0.9; /* leve transparência */
+  opacity: 0.9;
 }
 
 .texto-box {
@@ -745,43 +774,31 @@ display: block;
   padding: 0;
 }
 
-/* ===== Botão ===== */
-.btn-empresa {
-  display: inline-block;
-  padding: 12px 28px;
-  border-radius: 8px;
-  background: linear-gradient(90deg, #007bff 0%, #00b2ff 100%);
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.btn-empresa:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-}
-
-/* ===== Responsivo ===== */
 @media (max-width: 992px) {
   .empresas-content {
     flex-direction: column;
     text-align: center;
   }
 
+  .empresas-card {
+    width: 100%;
+  }
+
+  .empresas-text {
+    margin-top: 40px;
+  }
+
   .empresas-lista li {
     justify-content: center;
     text-align: left;
   }
-
+  
   .btn-empresa {
     margin-top: 20px;
   }
 }
-/*  */
-/* ===== SEÇÃO NOSSOS SERVIÇOS ===== */
-/* Estilos Principais (Repetidos para Cláreza) */
 
+/* ===== SEÇÃO NOSSOS SERVIÇOS ===== */
 .nossos-servicos-section {
     background: linear-gradient(180deg, #efefef 0%, #F9FAFB 100%);
     color: #333;
@@ -798,32 +815,23 @@ display: block;
     align-items: flex-start;
 }
 
-/* ⬅️ Coluna da Esquerda: Todo o Conteúdo de Texto e Lista */
 .servicos-left-content {
     flex: 1;
     max-width: 600px; 
 }
 
-.section-title {
-    color: #007bff;
-    font-size: 2.8em;
-    margin-bottom: 20px;
-}
-
-/* ➡️ Coluna da Direita: A Imagem */
 .servicos-right-content.image-column {
-    flex: 1; /* Ocupa o espaço disponível */
+    flex: 1;
     min-width: 350px; 
-    display: flex; /* Garante que a imagem se alinhe dentro da coluna */
-    justify-content: flex-end; /* Alinha a imagem à direita da sua própria coluna */
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .main-image-placeholder {
     width: 100%;
-    /* Remova a margem superior se não quiser espaçamento */
     margin-top: 0; 
-    text-align: right; /* Garante que a imagem fique à direita */
+    text-align: right;
 }
 
 .main-image-placeholder img {
@@ -831,8 +839,6 @@ display: block;
     height: auto;
     border-radius: 15px; 
 }
-
-
 
 .servicos-list {
     list-style: none;
@@ -842,7 +848,7 @@ display: block;
 
 .servico-item {
     display: flex; 
-    align-items: flex-start; /* Alinha ícone e texto ao topo */
+    align-items: flex-start;
     margin-bottom: 16px;
 }
 
@@ -862,9 +868,6 @@ display: block;
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }
 
-
-
-/* 📱 Responsividade (Essencial para telas menores) */
 @media (max-width: 992px) {
     .servicos-wrapper {
         flex-direction: column; 
@@ -875,31 +878,30 @@ display: block;
     .servicos-left-content,
     .servicos-right-content.image-column {
         width: 100%; 
-        text-align: center; /* Centraliza tudo ao quebrar para uma coluna */
+        text-align: center;
         padding-right: 0; 
-        order: 2; /* Coloca o texto em segundo */
+        order: 2;
     }
     
     .servicos-left-content {
-        order: 2; /* Texto fica embaixo da imagem */
+        order: 2;
     }
 
     .servicos-right-content.image-column {
-        order: 1; /* Imagem fica em cima do texto */
+        order: 1;
     }
 
     .main-image-placeholder {
-        text-align: center; /* Centraliza a imagem na coluna */
+        text-align: center;
     }
     
     .servico-item {
-        /* Se quiser manter a lista alinhada à esquerda mesmo no mobile: */
         flex-direction: row; 
         text-align: left;
         align-items: center;
         margin-left: auto;
         margin-right: auto;
-        max-width: 450px; /* Limita a largura dos itens da lista no mobile */
+        max-width: 450px;
     }
 
     .btn-servicos-cta {
@@ -913,33 +915,28 @@ display: block;
   background: #fff;
   padding: 80px 0;
   text-align: center;
+  position: relative;
+  padding-bottom: 100px;
 }
 
 .depoimentos-wrapper {
-  /* Oculta o que transborda e permite a rolagem horizontal */
   overflow: hidden;
   margin-top: 30px;
-  /* Garante que o wrapper tenha a largura total do container */
   width: 100%; 
 }
 
 .depoimentos-grid {
-  /* Remove o grid e usa flexbox para o carrossel */
   display: flex;
-  /* Impede a quebra de linha para que todos os cards fiquem na mesma linha */
   flex-wrap: nowrap; 
-  /* Define a largura total para acomodar todos os cards (originais + clones) */
-  width: 200%; /* 6 cards originais + 6 clones = 12 cards. 12 * (100% / 6) = 200% */
+  width: 200%;
   gap: 25px;
-  /* Garante que a animação seja aplicada */
   transform: translateX(0);
 }
 
 .depoimento {
-  /* Define a largura de cada card para que 3 caibam na tela (com gap) */
-  flex: 0 0 calc((100% / 6) - 25px); /* 100% / 6 cards visíveis - espaço do gap */
+  flex: 0 0 calc((100% / 6) - 25px);
   max-width: calc((100% / 6) - 25px);
-  min-width: 250px; /* Mantém o min-width original */
+  min-width: 250px;
   
   background: #f9f9f9;
   border-radius: 12px;
@@ -947,19 +944,15 @@ display: block;
   font-style: italic;
 }
 
-/* Define a animação de rolagem */
 @keyframes scrollDepoimentos {
   0% {
-    /* Começa na posição 0 */
     transform: translateX(0);
   }
   100% {
-    /* Rola a largura total dos cards originais (50% da largura total do grid) */
     transform: translateX(-50%);
   }
 }
 
-/* Estilos de Depoimento existentes */
 .depoimentos h3 {
  font-family: Segoe UI;
 font-weight: 700;
@@ -970,13 +963,12 @@ letter-spacing: 0%;
 text-align: center;
 vertical-align: middle;
 color:  rgba(8, 152, 231, 1);
-
-
 }
+
 .depoimento span {
   color:  rgba(21, 93, 252, 1);
-
 }
+
 .depoimento-profissao {
   font-family: Segoe UI;
 font-weight: 400;
@@ -986,38 +978,32 @@ line-height: 20px;
 letter-spacing: 0%;
 vertical-align: middle;
 color:  rgba(106, 114, 130, 1);
-
 }
 
-/* Estilos de Depoimento existentes */
+.depoimentos-aurea {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
 
 /* ====== CTA FINAL ====== */
 
 .cta-negocio-section {
-    /* Fundo de gradiente animado */
     background: linear-gradient(270deg, #007bff, #00c6ff, #007bff, #00c6ff);
-    background-size: 400% 400%; /* Aumenta o tamanho do gradiente para permitir a animação */
-    animation: gradient-animation 15s ease infinite; /* Aplica a animação */
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
     color: #fff;
-    /* Ajuste de padding para o espaçamento da imagem */
     padding: 100px 20px; 
     text-align: center; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden; 
     position: relative;
-}
-
-/* Definição da animação */
-@keyframes gradient-animation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 .cta-container {
@@ -1028,8 +1014,7 @@ color:  rgba(106, 114, 130, 1);
 }
 
 .cta-negocio-section h1 {
-    /* Estilo do título */
-    font-size: 3.0em; /* Aumentado conforme solicitação do usuário */
+    font-size: 3.0em;
     font-weight: 700;
     width: 100%;
 }
@@ -1037,22 +1022,20 @@ color:  rgba(106, 114, 130, 1);
 .cta-description {
   font-size: 18px;
   line-height: 1.0;
-  margin-bottom: 16px; /* Espaçamento ajustado */
-  opacity: 1; /* Removido a opacidade para texto mais forte */
+  margin-bottom: 16px;
+  opacity: 1;
   font-weight: 400;
 }
 
-/* Lista de Features/Vantagens */
 .features-list {
     display: flex;
     justify-content: center;
-    gap: 40px; /* Espaço entre os itens ajustado */
-    margin-bottom: 40px; /* Espaçamento ajustado */
+    gap: 30px;
+    margin-bottom: 40px; 
     flex-wrap: wrap;
 }
 
 .feature-item {
-    /* Estilo dos itens da lista */
     font-size: 1em;
     font-weight: 500;
     opacity: 1;
@@ -1062,17 +1045,22 @@ color:  rgba(106, 114, 130, 1);
 }
 
 .feature-item i {
-    /* Estilo do ícone de checkmark */
     color: #fff; 
     font-size: 1.2em;
 }
 
-/* Botões */
+.feature-item img {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    filter: brightness(0) invert(1);
+}
+
 .cta-buttons {
     display: flex;
     justify-content: center;
-    gap: 15px; /* Espaço entre os botões ajustado */
-    margin-bottom: 25px; /* Espaçamento ajustado */
+    gap: 15px;
+    margin-bottom: 25px;
 }
 
 .cta-buttons a {
@@ -1084,10 +1072,9 @@ color:  rgba(106, 114, 130, 1);
     font-size: 1em;
 }
 
-/* Botão Primário (Criar Conta Gratuita) */
 .btn-cta-primary {
     background-color: #fff;
-    color: #007bff; /* Cor do texto azul */
+    color: #007bff;
     border: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -1097,7 +1084,6 @@ color:  rgba(106, 114, 130, 1);
     transform: translateY(-1px);
 }
 
-/* Botão Secundário (Falar com Especialista) */
 .btn-cta-secondary {
     background-color: transparent;
     color: #fff;
@@ -1129,74 +1115,25 @@ color:  rgba(106, 114, 130, 1);
   }
 }
 
-.btn-secondary:hover {
-    transform: translateY(-2px);
-    background-color: rgba(255, 255, 255, 0.1); /* Um leve brilho no hover */
-}
-
-.btn-primary .fas {
-    margin-left: 8px;
-}
-
-/* Texto Pequeno de Confiança */
-.cta-small-text {
-    font-size: 0.85em;
-    opacity: 0.7;
-    margin-top: 20px;
-}
-
-/* Responsividade */
 @media (max-width: 600px) {
     .cta-negocio-section h1 {
         font-size: 2em;
     }
     
     .cta-buttons {
-        flex-direction: column; /* Empilha os botões */
+        flex-direction: column;
         align-items: center;
     }
 
     .cta-buttons a {
-        width: 80%; /* Botões mais largos em mobile */
+        width: 80%;
         max-width: 300px;
     }
-}
-/* Lista de Features/Vantagens (features-list) */
-.features-list {
-    display: flex;
-    justify-content: center;
-    gap: 30px; /* Espaço entre os itens */
-    margin-bottom: 40px; 
-    flex-wrap: wrap;
-}
-
-/* Item individual (feature-item) */
-.feature-item {
-    /* Transforma o span em um flex container para alinhar o ícone e o texto */
-    display: flex; 
-    align-items: center; /* Alinha o texto e o ícone verticalmente */
-    font-size: 1em;
-    font-weight: 500;
-    opacity: 0.85;
-}
-
-/* Imagem do ícone (o seu SVG) */
-.feature-item img {
-    width: 18px; /* Tamanho do ícone */
-    height: 18px;
-    margin-right: 8px; /* Espaço entre o ícone e o texto */
     
-    /* ESSENCIAL: Inverte a cor do SVG de preto para branco no fundo azul */
-    filter: brightness(0) invert(1);
-}
-
-/* 📱 Responsividade (Ajuste para telas menores) */
-@media (max-width: 600px) {
     .features-list {
-        /* Permite que os itens quebrem para a próxima linha */
         flex-direction: column; 
-        align-items: center; /* Centraliza o bloco de itens */
-        gap: 10px; /* Reduz o espaço vertical */
+        align-items: center;
+        gap: 10px;
     }
 }
 
@@ -1232,7 +1169,6 @@ color:  rgba(106, 114, 130, 1);
     min-width: 150px;
 }
 
-/* Coluna da Logo (Guia do Sorriso) */
 .col-info {
     flex: 1.8;
     max-width: 380px;
@@ -1285,7 +1221,6 @@ color:  rgba(106, 114, 130, 1);
     color: #fff;
 }
 
-/* Links das Colunas */
 .footer-links {
     list-style: none;
 }
@@ -1307,7 +1242,6 @@ color:  rgba(106, 114, 130, 1);
     color: #fff;
 }
 
-/* Ícones de Contato */
 .contact-item {
     display: flex;
     align-items: flex-start;
@@ -1320,7 +1254,6 @@ color:  rgba(106, 114, 130, 1);
     color: rgba(255, 255, 255, 0.5);
 }
 
-/* Ícones Sociais */
 .social-icons {
   display: flex;
   gap: 10px;
@@ -1362,7 +1295,6 @@ color:  rgba(106, 114, 130, 1);
   margin: 0;
 }
 
-/* Linha Separadora */
 .footer-divider {
     border: 0;
     height: 1px;
@@ -1371,7 +1303,6 @@ color:  rgba(106, 114, 130, 1);
     max-width: calc(100% - 40px);
 }
 
-/* Seção Inferior (Copyright e Links Legais) */
 .footer-bottom {
     display: flex;
     justify-content: space-between;
@@ -1399,7 +1330,6 @@ color:  rgba(106, 114, 130, 1);
     color: #fff;
 }
 
-/* Responsividade */
 @media (max-width: 992px) {
     .footer {
         padding: 40px 0 20px 0;
@@ -1459,79 +1389,75 @@ color:  rgba(106, 114, 130, 1);
 }
 
 /* ========================
-   AJUSTES: apenas HEADER fixo
-   - Mais espaço no header (logo x botões)
-   - Header fixo ao rolar
-   - Sem sticky no hero (hero rola normalmente)
-   - Mantém ajuste de respiro da foto
+   AJUSTES: Header fixo e responsivo
    ======================== */
 
 :root{
-  --header-height: 120px;
+  --header-height: 80px;
 }
 
-/* Espaçamento no header */
-.header-content{
-  padding-left: 24px;
-  padding-right: 24px;
-  column-gap: 48px;
-  height: 50px;
-}
-
-.nav{
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-/* Header fixo (acompanha a rolagem) */
 .header{
   position: sticky;
   top: 0;
   z-index: 1000;
-  backdrop-filter: saturate(140%) blur(2px);
-  height: 60px;
+  height: auto;
 }
 
-/* Garante que o hero NÃO fique sticky em nenhum breakpoint */
 .hero{
   position: relative !important;
   top: auto !important;
   z-index: auto !important;
 }
 
-/* Mais respiro entre a foto e os textos */
 .hero-content{
   gap: 80px;
 }
 
-/* Move a mulher levemente para a esquerda */
 .mulher-sorrindo{
   transform: translate(-140px, 60px);
 }
 
-/* Mobile: mantém tudo estável */
 @media (max-width: 1024px){
-  .nav{ gap: 16px; }
+  .nav{ 
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  
+  .nav a {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .logo {
+    width: 130px;
+  }
+  
+  .header.scrolled .logo {
+    width: 115px;
+  }
+  
   .hero-content{ gap: 32px; }
   .mulher-sorrindo{ transform: none; }
 }
 
-
-/* Estilo para a áurea de separação dos depoimentos */
-.depoimentos {
-  position: relative;
-  padding-bottom: 100px;
-}
-
-.depoimentos-aurea {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  z-index: 1;
-  display: block;
-  margin: 0;
-  padding: 0;
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 0;
+  }
+  
+  .nav {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .nav a {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  
+  .logo {
+    width: 120px;
+  }
 }
