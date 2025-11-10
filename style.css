@@ -208,72 +208,175 @@ body {
 }
 
 
-
-
+/* ====== ANIMAÇÃO DE GRADIENTE (Usada em várias seções) ====== */
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 /* ====== SOBRE ====== */
 .sobre {
-  /* Fundo de gradiente animado */
-  background: linear-gradient(270deg, #007bff, #00c6ff, #007bff, #00c6ff);
-  background-size: 400% 400%; /* Aumenta o tamanho do gradiente para permitir a animação */
-  animation: gradient-animation 15s ease infinite; /* Aplica a animação */
+  /* Fundo de gradiente azul vibrante animado */
+  background: linear-gradient(270deg, #0099ff, #00c6ff, #0099ff, #00c6ff);
+  background-size: 400% 400%;
+  animation: gradient-animation 15s ease infinite;
   color: #fff;
-  padding: 80px 0;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .sobre-content {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sobre-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sobre-img {
-  width: 552px;
-  height: 552px;
-  border-radius: 50px;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  border-radius: 24px;
+  transition: transform 0.3s ease;
 }
 
-.sobre-text h3 {
+.sobre-img:hover {
+  transform: scale(1.02);
+}
+
+.sobre-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.sobre-subtitle {
   font-size: 1rem;
+  font-weight: 600;
   text-transform: uppercase;
-  opacity: 0.8;
-}
-
-.sobre-text h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-}
-
-.sobre-text ul {
-  list-style: none;
-  margin: 20px 0;
-}
-
-.sobre-text ul li {
+  opacity: 0.9;
   margin-bottom: 8px;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.85);
 }
-.btn-secondary-sobre {
 
+.sobre-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.sobre-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
+}
+
+.sobre-list {
+  list-style: none;
+  margin: 32px 0;
+  padding: 0;
+}
+
+.sobre-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.sobre-list li i {
+  margin-right: 12px;
+  font-size: 1.2rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.btn-secondary-sobre {
   display: inline-block;
-  padding: 12px 24px;
-  border-radius: 25px;
-  margin-right: 10px;
+  padding: 14px 32px;
+  border-radius: 8px;
+  margin-top: 16px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1rem;
+  background: #fff;
+  color: #0099ff;
+  border: 2px solid #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-
-.btn-secondary-sobre {
-  background: #FFFFFF;
-  color: #00bfff;
-  padding: 12px 24px;
-  border-radius: 25px;
-  text-decoration: none;
-}
-
-
 
 .btn-secondary-sobre:hover {
-  background: linear-gradient(90deg, #1460F7 0%, #0190BB 100%);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .sobre-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .sobre-image-wrapper {
+    order: 1;
+  }
+  
+  .sobre-text {
+    order: 2;
+  }
+  
+  .sobre-list {
+    text-align: left;
+    display: inline-block;
+  }
+  
+  .sobre-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sobre {
+    padding: 60px 0;
+  }
+  
+  .sobre-title {
+    font-size: 1.8rem;
+  }
+  
+  .sobre-description {
+    font-size: 1rem;
+  }
+  
+  .sobre-img {
+    max-width: 100%;
+  }
 }
 
 
@@ -304,7 +407,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
-  text-align: center;
+  /* text-align: center; Removido para permitir alinhamento à esquerda */
  
 }
 
@@ -314,6 +417,32 @@ body {
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  text-align: left; /* Alinha o conteúdo do card à esquerda */
+}
+
+.beneficio-card-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: initial;
+}
+
+.beneficio-card-header img {
+  width: 50px; /* Ajuste o tamanho do ícone conforme necessário */
+  height: 50px;
+  flex-shrink: 0; /* Impede que o ícone encolha */
+  flex: autom: 0 0 auto; /* Garante que o ícone mantenha seu tamanho */
+  justify-content: left; /* Alinha o ícone à esquerda */
+}
+
+.beneficio-card-header h4 {
+  margin: 0; /* Remove margem padrão do h4 */
+  font-size: 16px;
+}
+
+.beneficio-card p {
+  text-align: left; /* Alinha a descrição à esquerda */
+  font-size: 18px;
 }
 
 /* ====== DENTISTAS ====== */
