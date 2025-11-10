@@ -862,8 +862,10 @@ color:  rgba(106, 114, 130, 1);
 /* ====== CTA FINAL ====== */
 
 .cta-negocio-section {
-    /* Fundo de gradiente azul vibrante, como na imagem */
-    background: linear-gradient(135deg, #007bff, #00c6ff);
+    /* Fundo de gradiente animado */
+    background: linear-gradient(270deg, #007bff, #00c6ff, #007bff, #00c6ff);
+    background-size: 400% 400%; /* Aumenta o tamanho do gradiente para permitir a animação */
+    animation: gradient-animation 15s ease infinite; /* Aplica a animação */
     color: #fff;
     /* Ajuste de padding para o espaçamento da imagem */
     padding: 100px 20px; 
@@ -871,6 +873,19 @@ color:  rgba(106, 114, 130, 1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden; 
     position: relative;
+}
+
+/* Definição da animação */
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .cta-container {
