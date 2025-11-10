@@ -158,7 +158,7 @@ body {
 }
 
 
-/* aura azul — decorativo */
+/* aura azul – decorativo */
 .hero-decorative {
   position: absolute;
   bottom: 50px; /* fixa a aura na parte de baixo */
@@ -172,7 +172,7 @@ body {
   height: 350px;
 }
 
-/* mulher sorrindo — principal */
+/* mulher sorrindo – principal */
 .mulher-sorrindo {
   position: relative;
   
@@ -1072,133 +1072,175 @@ color:  rgba(106, 114, 130, 1);
 }
 
 /* ====== FOOTER ====== */
-/* Para usar os ícones, adicione esta linha no <head> do seu HTML */
-/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> */
-
 .footer {
-    background-color: #000; /* Fundo Preto */
-    color: #fff; /* Texto Branco */
-    padding: 60px 20px 20px 20px;
-    font-family: Arial, sans-serif;
+    background-color: #1a2332;
+    color: #fff;
+    padding: 60px 0 30px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.container {
+.footer * {
+    padding: 0;
+    margin: 0;
+}
+
+.footer .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .footer-content {
     display: flex;
     justify-content: space-between;
-    gap: 30px; /* Espaço entre as colunas */
-    flex-wrap: wrap; /* Garante quebras de linha em telas pequenas */
-    padding-bottom: 40px;
+    gap: 40px;
+    flex-wrap: nowrap;
+    padding-bottom: 30px;
 }
 
 .footer-col {
-    /* Define uma base flexível, permitindo que as colunas se ajustem */
-    flex: 1 1 200px; 
-    min-width: 150px; /* Largura mínima para evitar quebras desnecessárias */
+    flex: 1;
+    min-width: 150px;
 }
 
 /* Coluna da Logo (Guia do Sorriso) */
 .col-info {
-    flex: 1.5 1 300px; /* Dá mais espaço para a coluna de informações */
+    flex: 1.8;
+    max-width: 380px;
 }
 
 .footer-logo-block {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 .logo-icon {
-    width: 35px; /* Tamanho do ícone da logo */
-    height: 35px;
-    margin-right: 10px;
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+    background-color: #0099ff;
+    border-radius: 8px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .logo-text {
-    font-size: 1.5em;
-    font-weight: bold;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #fff;
+    padding: 0;
+    margin: 0;
 }
 
 .logo-description {
-    font-size: 0.95em;
+    font-size: 0.9em;
     line-height: 1.6;
-    margin-bottom: 25px;
-    opacity: 0.8;
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.7);
 }
 
-/* Títulos das Colunas */
 .footer-col h4 {
-    font-size: 1.1em;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-size: 1.05em;
+    font-weight: 600;
+    margin-bottom: 18px;
     color: #fff;
 }
 
 /* Links das Colunas */
 .footer-links {
     list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 .footer-links li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .footer-links a, .footer-links .contact-item {
-    color: #fff;
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     font-size: 0.9em;
-    opacity: 0.8;
-    transition: opacity 0.2s;
-    display: flex; /* Para alinhar ícone e texto */
+    transition: color 0.2s;
+    display: flex;
     align-items: flex-start;
 }
 
 .footer-links a:hover {
-    opacity: 1;
+    color: #fff;
 }
 
 /* Ícones de Contato */
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+}
+
 .contact-item i {
-    margin-right: 8px;
-    margin-top: 3px; /* Pequeno ajuste vertical para o ícone */
+    margin-right: 10px;
+    margin-top: 3px;
     font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 /* Ícones Sociais */
 .social-icons {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
 }
 
 .social-link {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%; /* Círculo */
-    background-color: #1a1a1a; /* Fundo dos ícones sociais */
-    color: #fff;
-    font-size: 1em;
-    transition: background-color 0.3s;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  padding: 0;
 }
 
 .social-link:hover {
-    background-color: #007bff; /* Azul no hover */
+  background-color: #0099ff;
+  border-color: #0099ff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 153, 255, 0.3);
+}
+
+.social-link i {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-link img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+  padding: 0;
+  margin: 0;
 }
 
 /* Linha Separadora */
 .footer-divider {
     border: 0;
     height: 1px;
-    background-color: #333;
-    margin: 20px 0 20px 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 30px auto 25px auto;
+    max-width: calc(100% - 40px);
 }
 
 /* Seção Inferior (Copyright e Links Legais) */
@@ -1206,55 +1248,85 @@ color:  rgba(106, 114, 130, 1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
-    font-size: 0.8em;
-    opacity: 0.7;
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.copyright {
+    margin: 0;
+}
+
+.legal-links {
+    display: flex;
+    gap: 20px;
 }
 
 .legal-links a {
-    color: #fff;
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
-    margin-left: 15px;
-    transition: opacity 0.2s;
+    transition: color 0.2s;
 }
 
 .legal-links a:hover {
-    opacity: 1;
+    color: #fff;
 }
 
 /* Responsividade */
+@media (max-width: 992px) {
+    .footer {
+        padding: 40px 0 20px 0;
+    }
+    
+    .footer-content {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    
+    .footer-col {
+        flex: 1 1 45%;
+        min-width: 200px;
+    }
+    
+    .col-info {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
 @media (max-width: 768px) {
     .footer-content {
-        flex-direction: column; /* Empilha as colunas em mobile */
-        gap: 40px;
+        flex-direction: column;
+        gap: 35px;
     }
     
     .footer-col {
         min-width: 100%;
     }
+    
+    .col-info {
+        max-width: 100%;
+    }
 
     .social-icons {
-        justify-content: flex-start; /* Alinha ícones sociais à esquerda */
+        justify-content: flex-start;
     }
 
     .footer-bottom {
         flex-direction: column;
         align-items: flex-start;
+        gap: 15px;
     }
     
     .copyright {
-        margin-bottom: 10px;
+        margin-bottom: 0;
     }
 
     .legal-links {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-    }
-    
-    .legal-links a {
-        margin-left: 0;
-        margin-bottom: 5px;
+        gap: 8px;
     }
 }
 
@@ -1320,8 +1392,8 @@ color:  rgba(106, 114, 130, 1);
 
 /* Estilo para a áurea de separação dos depoimentos */
 .depoimentos {
-  position: relative; /* Garante que a áurea seja posicionada em relação a esta seção */
-  padding-bottom: 100px; /* Adiciona espaço para a áurea não sobrepor o conteúdo */
+  position: relative;
+  padding-bottom: 100px;
 }
 
 .depoimentos-aurea {
@@ -1330,7 +1402,7 @@ color:  rgba(106, 114, 130, 1);
   left: 0;
   width: 100%;
   height: auto;
-  z-index: 1; /* Garante que fique acima do background, mas abaixo do conteúdo da próxima seção se necessário */
+  z-index: 1;
   display: block;
   margin: 0;
   padding: 0;
