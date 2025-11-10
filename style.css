@@ -1,0 +1,1231 @@
+/* ====== RESET ====== */
+* {
+  margin: 0;
+  padding: 8px 16px 8px 16px;
+  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  color: #333;
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ====== HEADER ====== */
+.header {
+  background: #fff;
+  padding: 20px 0%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px 0px 0px;
+}
+
+.logo {
+  width: 248px;
+  height: 87px;
+
+}
+
+
+.nav a {
+  color: #333;
+  padding: 0px 0px;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+  left: 50%;
+}
+
+.nav a.active,
+.nav a:hover {
+   background: #007bff;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 8px;
+
+
+}
+
+
+/* ===== HERO ===== */
+
+.hero {
+  position: relative;
+ background: linear-gradient(180deg, #FFFFFF 0%, rgba(239, 246, 255, 0.3) 50%, #FFFFFF 100%);
+  overflow: hidden;
+  padding: 8px 16px 8px 16px;
+}
+
+/* container flexível */
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== TEXTO ===== */
+.hero-text {
+  flex: 1;
+  padding: 16px 0px 16px 0;
+  position: relative;
+  z-index: 3;
+  left: 20%;
+}
+
+.hero-text h1 {
+  color: #004aad;
+  font-size: 2.8rem;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+.text-tecnologia {
+ 
+  width: 297.6666564941406px;
+  height: 42.67000198364258px;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.6);
+  color: rgba(0, 180, 219, 1);
+  top: 17.33px;
+  left: 259px;
+  border-radius: 44739200px;
+  border-width: 1px;
+}
+
+.hero-text p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  max-width: 500px;
+}
+
+/* ===== HERO BUTTONS ===== */
+
+.hero-buttons a {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 25px;
+  margin-right: 10px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hero .btn-primary {
+  background: linear-gradient(90deg, #1363F9 0%, #20C1E0 100%);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+}
+
+
+.hero .btn-secondary {
+  background: #FFFFFF;
+  color: #00bfff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+}
+
+/* ===== IMAGENS ===== */
+.hero-image {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: flex-end; /* faz a aura e a mulher se alinhar na parte de baixo */
+  justify-content: center;
+  min-width: 400px;
+  height: 900px;
+  overflow: visible;
+}
+
+
+/* aura azul — decorativo */
+.hero-decorative {
+  position: absolute;
+  bottom: 50px; /* fixa a aura na parte de baixo */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000%; /* cobre mais que a largura da mulher */
+  height: auto;
+  z-index: 1; /* atrás da mulher */
+  object-fit: cover;
+  opacity: 0.9; /* leve transparência */
+  height: 350px;
+}
+
+/* mulher sorrindo — principal */
+.mulher-sorrindo {
+  position: relative;
+  
+  z-index: 2;
+  width: 1344px;
+  height: 896px;
+  transform: translate(-50px, 60px); /* move para a esquerda e abaixa um pouco */
+
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 1024px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image {
+    order: -1;
+    height: auto;
+    align-items: center;
+  }
+
+  .mulher-sorrindo {
+    width: 90%;
+    transform: none;
+  }
+
+  .hero-decorative {
+    width: 140%;
+    bottom: -30px;
+  }
+}
+
+
+
+
+
+/* ====== SOBRE ====== */
+.sobre {
+  background: #007bff;
+  color: #fff;
+  padding: 80px 0;
+}
+
+.sobre-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.sobre-img {
+  width: 552px;
+  height: 552px;
+  border-radius: 50px;
+}
+
+.sobre-text h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.sobre-text h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.sobre-text ul {
+  list-style: none;
+  margin: 20px 0;
+}
+
+.sobre-text ul li {
+  margin-bottom: 8px;
+}
+.btn-secondary-sobre {
+
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 25px;
+  margin-right: 10px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-secondary-sobre {
+  background: #FFFFFF;
+  color: #00bfff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+}
+
+
+
+.btn-secondary-sobre:hover {
+  background: linear-gradient(90deg, #1460F7 0%, #0190BB 100%);
+}
+
+
+/* ====== BENEFÍCIOS ====== */
+.beneficios {
+  background: #f9fcff;
+  padding: 90px 0;
+  position: relative;
+}
+
+.beneficios-icon {
+  padding: 0px 0px 0px 0;
+   position: absolute;
+   top: 0;
+   margin: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%; /* cobre mais que a largura da mulher */
+  height: 200px;
+  z-index: 1; /* atrás da mulher */
+  object-fit: cover;
+  opacity: 0.9; /* leve transparência */
+  height: 136px;
+}
+
+.beneficios-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  text-align: center;
+ 
+}
+
+.beneficio-card {
+  background: #fff;
+  bottom: 50%;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* ====== DENTISTAS ====== */
+/* ===== Seção Dentistas ===== */
+.dentistas {
+  padding: 80px 0;
+}
+
+.dentistas-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dentistas-text {
+  flex: 1;
+  max-width: 500px;
+}
+
+.section-title {
+  color: #0099ff;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  padding: 0;
+}
+
+.section-subtitle {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  color: #4a5568;
+  padding: 0;
+}
+
+.dentistas-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+
+.dentistas-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding: 0;
+}
+
+.dentistas-list li > img {
+  width: 44px;
+  height: 44px;
+  background: #e3f2fd;
+  border-radius: 12px;
+  padding: 10px;
+  flex-shrink: 0;
+}
+
+.dentistas-list div {
+  padding: 0;
+}
+
+.dentistas-list h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 6px 0;
+  padding: 0;
+}
+
+.dentistas-list p {
+  color: #718096;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-azul {
+  display: inline-block;
+  background: #0099ff;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 153, 255, 0.3);
+}
+
+.btn-azul:hover {
+  background: #0088ee;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 153, 255, 0.4);
+}
+
+/* ===== Imagem ===== */
+.dentistas-image {
+    position: relative;
+    flex: 1.2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    min-width: 450px;
+    width: 552px;
+    height: 747px;
+}
+
+/* Imagem preenchendo toda a div */
+.dentistas-image img {
+
+    height: 100%;
+    border-radius: 50px;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+}
+
+.dentistas-image .blue-decor {
+    display: block;
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 108px;
+    height: 126px;
+    background: #1E90FF;
+    border-radius: 0 20px 20px 20px;
+    z-index: 1;
+}
+
+/* ====== EMPRESAS ====== */
+/* ===== SEÇÃO EMPRESAS ===== */
+.empresas {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+  padding: 100px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.empresas-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+
+
+
+
+
+
+/* ===== TEXTO À DIREITA ===== */
+.empresas-text {
+  flex: 1;
+  
+}
+
+.empresas-text h3 {
+  font-size: 1.8rem;
+  color: #0077cc;
+  margin-bottom: 20px;
+}
+
+.empresas-text p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+
+
+/* ===== BOTÃO ===== */
+.btn-empresa {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #007bff 0%, #00b2ff 100%);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-empresa:hover {
+  box-shadow: 0 6px 18px rgba(0, 123, 255, 0.3);
+}
+
+/* ===== Forma inferior ===== */
+.wave-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-bottom svg {
+  display: block;
+  width: 100%;
+  height: 100px;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 992px) {
+  .empresas-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .empresas-card {
+    width: 100%;
+  }
+
+  .empresas-text {
+    margin-top: 40px;
+  }
+
+  .empresas-lista li {
+    justify-content: center;
+    text-align: left;
+  }
+}
+
+
+/* ===== Lista de itens ===== */
+.empresas-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+
+.empresas-lista li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.icon-box {
+  background: #f3f7ff;
+  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.icon-box img {
+  width: 24px;
+  height: 24px;
+}
+
+.empresas-icon {
+   padding: 0px 0px 0px 0;
+   position: absolute;
+  bottom: 0;
+   margin: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%; /* cobre mais que a largura da mulher */
+  height: 200px;
+  z-index: 1; /* atrás da mulher */
+  object-fit: cover;
+  opacity: 0.9; /* leve transparência */
+}
+
+.texto-box strong {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.texto-box p {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ===== Botão ===== */
+.btn-empresa {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #007bff 0%, #00b2ff 100%);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-empresa:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 992px) {
+  .empresas-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .empresas-lista li {
+    justify-content: center;
+    text-align: left;
+  }
+
+  .btn-empresa {
+    margin-top: 20px;
+  }
+}
+/*  */
+/* ===== SEÇÃO NOSSOS SERVIÇOS ===== */
+/* Estilos Principais (Repetidos para Cláreza) */
+
+.nossos-servicos-section {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+    color: #333;
+    padding: 80px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.servicos-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px; 
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; 
+    align-items: flex-start;
+}
+
+/* ⬅️ Coluna da Esquerda: Todo o Conteúdo de Texto e Lista */
+.servicos-left-content {
+    flex: 1; /* Ocupa o espaço disponível */
+    min-width: 300px; 
+    /* Adicione padding à direita se necessário para separar visualmente em desktop */
+    padding-right: 20px; 
+}
+
+.section-title {
+    color: #007bff;
+    font-size: 2.8em;
+    margin-bottom: 20px;
+}
+
+/* ➡️ Coluna da Direita: A Imagem */
+.servicos-right-content.image-column {
+    flex: 1; /* Ocupa o espaço disponível */
+    min-width: 350px; 
+    display: flex; /* Garante que a imagem se alinhe dentro da coluna */
+    justify-content: flex-end; /* Alinha a imagem à direita da sua própria coluna */
+    align-items: center;
+}
+
+.main-image-placeholder {
+    width: 100%;
+    /* Remova a margem superior se não quiser espaçamento */
+    margin-top: 0; 
+    text-align: right; /* Garante que a imagem fique à direita */
+}
+
+.main-image-placeholder img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); 
+}
+
+
+
+.servicos-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.servico-item {
+    display: flex; 
+    align-items: flex-start; /* Alinha ícone e texto ao topo */
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.btn-servicos-cta{
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #007bff 0%, #00b2ff 100%);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-servicos-cta:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+
+
+/* 📱 Responsividade (Essencial para telas menores) */
+@media (max-width: 992px) {
+    .servicos-wrapper {
+        flex-direction: column; 
+        align-items: center; 
+        gap: 40px;
+    }
+
+    .servicos-left-content,
+    .servicos-right-content.image-column {
+        width: 100%; 
+        text-align: center; /* Centraliza tudo ao quebrar para uma coluna */
+        padding-right: 0; 
+        order: 2; /* Coloca o texto em segundo */
+    }
+    
+    .servicos-left-content {
+        order: 2; /* Texto fica embaixo da imagem */
+    }
+
+    .servicos-right-content.image-column {
+        order: 1; /* Imagem fica em cima do texto */
+    }
+
+    .main-image-placeholder {
+        text-align: center; /* Centraliza a imagem na coluna */
+    }
+    
+    .servico-item {
+        /* Se quiser manter a lista alinhada à esquerda mesmo no mobile: */
+        flex-direction: row; 
+        text-align: left;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 450px; /* Limita a largura dos itens da lista no mobile */
+    }
+
+    .btn-servicos-cta {
+        width: 100%; 
+        box-sizing: border-box; 
+    }
+}
+
+/* ====== DEPOIMENTOS ====== */
+.depoimentos {
+  background: #fff;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.depoimentos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+
+}
+.depoimentos h3 {
+ font-family: Segoe UI;
+font-weight: 700;
+font-style: Bold;
+font-size: 24px;
+line-height: 24px;
+letter-spacing: 0%;
+text-align: center;
+vertical-align: middle;
+color:  rgba(8, 152, 231, 1);
+
+
+}
+.depoimento span {
+  color:  rgba(21, 93, 252, 1);
+
+}
+.depoimento-profissao {
+  font-family: Segoe UI;
+font-weight: 400;
+font-style: Regular;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: 0%;
+vertical-align: middle;
+color:  rgba(106, 114, 130, 1);
+
+}
+
+.depoimento {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 25px;
+  font-style: italic;
+}
+
+/* ====== CTA FINAL ====== */
+/* Para usar o código, adicione esta linha no <head> do seu HTML para os ícones */
+/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> */
+
+.cta-negocio-section {
+    /* Fundo de gradiente azul vibrante, como na imagem */
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center; /* Centraliza todo o conteúdo */
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Garante que elementos fora do gradiente não causem barra de rolagem */
+    position: relative;
+}
+
+.cta-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2; /* Garante que o texto fique acima de qualquer elemento de fundo */
+}
+
+.cta-negocio-section h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.cta-description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* Lista de Features/Vantagens */
+.features-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espaço entre os itens */
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    font-size: 1em;
+    font-weight: 500;
+    opacity: 0.85;
+}
+
+.feature-item .fas {
+    color: #fff; /* Cor do ícone */
+    margin-right: 8px;
+    font-size: 1.1em;
+}
+
+/* Botões */
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.cta-buttons a {
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Botão Principal: Criar Conta Gratuita */
+.btn-primary {
+   background: rgba(255, 255, 255, 1);
+    color: rgba(21, 93, 252, 1);
+    border: 2px solid rgba(255, 255, 255, 1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Botão Secundário: Falar com Especialista */
+.btn-secondary {
+    background: rgba(255, 255, 255, 1);
+    color: rgba(21, 93, 252, 1);
+    border: 2px solid #fff;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.1); /* Um leve brilho no hover */
+}
+
+.btn-primary .fas {
+    margin-left: 8px;
+}
+
+/* Texto Pequeno de Confiança */
+.cta-small-text {
+    font-size: 0.85em;
+    opacity: 0.7;
+    margin-top: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .cta-negocio-section h1 {
+        font-size: 2em;
+    }
+    
+    .cta-buttons {
+        flex-direction: column; /* Empilha os botões */
+        align-items: center;
+    }
+
+    .cta-buttons a {
+        width: 80%; /* Botões mais largos em mobile */
+        max-width: 300px;
+    }
+}
+/* Lista de Features/Vantagens (features-list) */
+.features-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espaço entre os itens */
+    margin-bottom: 40px; 
+    flex-wrap: wrap;
+}
+
+/* Item individual (feature-item) */
+.feature-item {
+    /* Transforma o span em um flex container para alinhar o ícone e o texto */
+    display: flex; 
+    align-items: center; /* Alinha o texto e o ícone verticalmente */
+    font-size: 1em;
+    font-weight: 500;
+    opacity: 0.85;
+}
+
+/* Imagem do ícone (o seu SVG) */
+.feature-item img {
+    width: 18px; /* Tamanho do ícone */
+    height: 18px;
+    margin-right: 8px; /* Espaço entre o ícone e o texto */
+    
+    /* ESSENCIAL: Inverte a cor do SVG de preto para branco no fundo azul */
+    filter: brightness(0) invert(1);
+}
+
+/* 📱 Responsividade (Ajuste para telas menores) */
+@media (max-width: 600px) {
+    .features-list {
+        /* Permite que os itens quebrem para a próxima linha */
+        flex-direction: column; 
+        align-items: center; /* Centraliza o bloco de itens */
+        gap: 10px; /* Reduz o espaço vertical */
+    }
+}
+
+/* ====== FOOTER ====== */
+/* Para usar os ícones, adicione esta linha no <head> do seu HTML */
+/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> */
+
+.footer {
+    background-color: #000; /* Fundo Preto */
+    color: #fff; /* Texto Branco */
+    padding: 60px 20px 20px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; /* Espaço entre as colunas */
+    flex-wrap: wrap; /* Garante quebras de linha em telas pequenas */
+    padding-bottom: 40px;
+}
+
+.footer-col {
+    /* Define uma base flexível, permitindo que as colunas se ajustem */
+    flex: 1 1 200px; 
+    min-width: 150px; /* Largura mínima para evitar quebras desnecessárias */
+}
+
+/* Coluna da Logo (Guia do Sorriso) */
+.col-info {
+    flex: 1.5 1 300px; /* Dá mais espaço para a coluna de informações */
+}
+
+.footer-logo-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.logo-icon {
+    width: 35px; /* Tamanho do ícone da logo */
+    height: 35px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.logo-description {
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    opacity: 0.8;
+}
+
+/* Títulos das Colunas */
+.footer-col h4 {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Links das Colunas */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a, .footer-links .contact-item {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    display: flex; /* Para alinhar ícone e texto */
+    align-items: flex-start;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+/* Ícones de Contato */
+.contact-item i {
+    margin-right: 8px;
+    margin-top: 3px; /* Pequeno ajuste vertical para o ícone */
+    font-size: 0.9em;
+}
+
+/* Ícones Sociais */
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; /* Círculo */
+    background-color: #1a1a1a; /* Fundo dos ícones sociais */
+    color: #fff;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.social-link:hover {
+    background-color: #007bff; /* Azul no hover */
+}
+
+/* Linha Separadora */
+.footer-divider {
+    border: 0;
+    height: 1px;
+    background-color: #333;
+    margin: 20px 0 20px 0;
+}
+
+/* Seção Inferior (Copyright e Links Legais) */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+.legal-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+    transition: opacity 0.2s;
+}
+
+.legal-links a:hover {
+    opacity: 1;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Empilha as colunas em mobile */
+        gap: 40px;
+    }
+    
+    .footer-col {
+        min-width: 100%;
+    }
+
+    .social-icons {
+        justify-content: flex-start; /* Alinha ícones sociais à esquerda */
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .copyright {
+        margin-bottom: 10px;
+    }
+
+    .legal-links {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .legal-links a {
+        margin-left: 0;
+        margin-bottom: 5px;
+    }
+}
+
+/* ========================
+   AJUSTES: apenas HEADER fixo
+   - Mais espaço no header (logo x botões)
+   - Header fixo ao rolar
+   - Sem sticky no hero (hero rola normalmente)
+   - Mantém ajuste de respiro da foto
+   ======================== */
+
+:root{
+  --header-height: 120px;
+}
+
+/* Espaçamento no header */
+.header-content{
+  padding-left: 24px;
+  padding-right: 24px;
+  column-gap: 48px;
+  height: 50px;
+}
+
+.nav{
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Header fixo (acompanha a rolagem) */
+.header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: saturate(140%) blur(2px);
+  height: 60px;
+}
+
+/* Garante que o hero NÃO fique sticky em nenhum breakpoint */
+.hero{
+  position: relative !important;
+  top: auto !important;
+  z-index: auto !important;
+}
+
+/* Mais respiro entre a foto e os textos */
+.hero-content{
+  gap: 80px;
+}
+
+/* Move a mulher levemente para a esquerda */
+.mulher-sorrindo{
+  transform: translate(-140px, 60px);
+}
+
+/* Mobile: mantém tudo estável */
+@media (max-width: 1024px){
+  .nav{ gap: 16px; }
+  .hero-content{ gap: 32px; }
+  .mulher-sorrindo{ transform: none; }
+}
