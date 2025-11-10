@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ghia do Sorriso</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
   </head>
   <body>
@@ -340,7 +341,8 @@
     <section class="depoimentos">
       <div class="container">
         <h3>O que dizem nossos usuários</h3>
-        <div class="depoimentos-grid">
+        <div class="depoimentos-wrapper">
+          <div class="depoimentos-grid">
           <div class="depoimento">
             <img src="/static/img/icone/avaliacao.svg" alt="Ícone aspas" />
             <p>
@@ -367,6 +369,32 @@
             </p>
             <span>AlignTech Lab</span>
           </div>
+          <!-- Novos Depoimentos -->
+          <div class="depoimento">
+            <img src="/static/img/icone/avaliacao.svg" alt="Ícone aspas" />
+            <p>
+              "A plataforma Ghia do Sorriso simplificou a gestão dos meus casos. A comunicação com o laboratório é instantânea e o planejamento é impecável."
+            </p>
+            <span>Dr. Pedro H.</span>
+            <p class="depoimento-profissao">Clínico Geral - Belo Horizonte</p>
+          </div>
+          <div class="depoimento">
+            <img src="/static/img/icone/avaliacao.svg" alt="Ícone aspas" />
+            <p>
+              "O suporte técnico é excelente! Tive uma dúvida no envio de um exame e fui atendida rapidamente. Recomendo a todos os colegas."
+            </p>
+            <span>Dra. Carla V.</span>
+            <p class="depoimento-profissao">Ortodontista - Curitiba</p>
+          </div>
+          <div class="depoimento">
+            <img src="/static/img/icone/avaliacao.svg" alt="Ícone aspas" />
+            <p>
+              "Como laboratório, a organização dos pedidos e o acesso aos arquivos dos dentistas melhorou muito nosso fluxo de trabalho. É um divisor de águas."
+            </p>
+            <span>Dental Pro Lab</span>
+            <p class="depoimento-profissao">Laboratório de Prótese - São Paulo</p>
+          </div>
+          <!-- Fim Novos Depoimentos -->
         </div>
       </div>
     </section>
@@ -383,24 +411,22 @@
 
         <div class="features-list">
           <span class="feature-item">
-            <img src="/static/img/icone/check.svg" alt="Ícone check" />
+            <i class="far fa-check-circle"></i>
             Cadastro gratuito
           </span>
           <span class="feature-item">
-            <img src="/static/img/icone/check.svg" alt="Ícone check" />
+            <i class="far fa-check-circle"></i>
             Sem cartão de crédito
           </span>
           <span class="feature-item">
-            <img src="/static/img/icone/check.svg" alt="Ícone check" />
+            <i class="far fa-check-circle"></i>
             Suporte dedicado
           </span>
         </div>
 
         <div class="cta-buttons">
-          <a href="#" class="btn-primary"
-            >Criar Conta Gratuita <i class="fas fa-arrow-right"></i
-          ></a>
-          <a href="#" class="btn-secondary">Falar com Especialista</a>
+          <a href="#" class="btn-cta-primary">Criar Conta Gratuita →</a>
+          <a href="#" class="btn-cta-secondary">Falar com Especialista</a>
         </div>
 
         <p class="cta-small-text">
@@ -500,5 +526,6 @@
         </div>
       </div>
     </footer>
+  <script src="script.js"></script>
   </body>
 </html>
