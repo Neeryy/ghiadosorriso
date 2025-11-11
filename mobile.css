@@ -1,0 +1,372 @@
+/* =================================================== */
+/* ARQUIVO DE ESTILO MOBILE
+/* (Para telas de 768px ou menores)
+/* =================================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== CORREÇÕES DE PERFORMANCE (Mobile) ===== */
+  
+  /* Desabilita animações de brilho */
+  .beneficio-card::before,
+  .depoimento::before {
+    display: none;
+  }
+  
+  /* Desabilita gradiente animado do H1 (economia de bateria) */
+  .hero-text h1 {
+    animation: none !important;
+    background: #004aad !important;
+    -webkit-text-fill-color: #004aad !important;
+  }
+  
+  /* Desabilita animações de pulso (economia de bateria) */
+  body.loaded .btn-primary,
+  body.loaded .btn-cta-primary {
+    animation: none;
+  }
+
+  /* ===== HEADER E MENU HAMBÚRGUER ===== */
+  
+  .header-content {
+    flex-direction: row; /* Mantém logo e botão na mesma linha */
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+  }
+  
+  .logo {
+    width: 120px;
+    z-index: 1003; /* Garante que o logo fique acima do overlay */
+  }
+
+/* --- Estilo do Botão Hambúrguer --- */
+  
+/* Transforma o botão em um ícone de 3 linhas (CSS) */
+.nav-toggle {
+    display: block; /* Mostra o botão no mobile */
+    position: relative;
+    width: 28px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+    padding: 0;
+    margin: 0;
+    /* Garante que o botão não seja afetado pelo padding do reset */
+    margin: 8px 16px;
+}
+
+/* Barras de cima e de baixo (criadas no botão) */
+.nav-toggle::before,
+.nav-toggle::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #007bff; /* Cor do ícone */
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    padding: 0; /* <<< CORREÇÃO AQUI (Anula o padding: 8px 16px do reset) */
+}
+
+/* Barra do meio (usa o seu ícone .bi-list) */
+.nav-toggle .bi-list {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #007bff; /* Cor do ícone */
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    
+    /* Posição */
+    top: 50%;
+    transform: translateY(-50%);
+    
+    /* Esconde o ícone real do bootstrap e usa só a caixa */
+    font-size: 0; 
+    color: transparent;
+    
+    padding: 0; /* <<< CORREÇÃO AQUI (Anula o padding: 8px 16px do reset) */
+}
+/* Esconde o pseudo-elemento ::before do bootstrap icon */
+.nav-toggle .bi-list::before {
+    display: none;
+}
+
+.nav-toggle::before { top: 0; }
+.nav-toggle::after { bottom: 0; }
+
+/* --- Animação do 'X' quando o menu está aberto --- */
+
+body.nav-open .nav-toggle::before {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+body.nav-open .nav-toggle .bi-list { /* Barra do meio (o <i>) */
+    opacity: 0;
+    transform: translateX(-10px);
+}
+body.nav-open .nav-toggle::after {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+}
+  
+  /* --- Menu deslizante (Nav) --- */
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%; /* Largura do menu */
+    max-width: 300px;
+    height: 100vh; /* Altura total */
+    background: #fff;
+    
+    /* Layout do menu */
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+    padding: 80px 20px 20px;
+    gap: 15px;
+    
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%); /* Começa escondido */
+    transition: transform 0.3s ease-out;
+    z-index: 1001;
+  }
+
+  .nav a {
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    width: 100%;
+    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+  }
+
+  /* --- Overlay (fundo escuro) --- */
+
+  .nav-overlay {
+    display: block; /* Habilita o overlay no mobile */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none; /* Não clicável por padrão */
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+  }
+
+  /* --- Estilos do Menu Aberto (via classe 'nav-open' no body) --- */
+  
+  /* ESTA É A CORREÇÃO PARA TRAVAR A ROLAGEM */
+  body.nav-open {
+    overflow: hidden;
+  }
+  
+  body.nav-open .nav {
+    transform: translateX(0); /* Mostra o menu */
+  }
+
+  body.nav-open .nav-overlay {
+    opacity: 1;
+    pointer-events: auto; /* Permite clicar para fechar */
+  }
+
+  
+  /* ===== HERO SECTION ===== */
+  
+  /* Esta regra substitui o bloco de JavaScript! */
+  .hero-image,
+  .mulher-sorrindo,
+  .hero-decorative {
+    display: none !important; /* Esconde imagens da hero no mobile */
+  }
+  
+  .hero {
+    padding-top: 20px;
+    min-height: auto;
+  }
+  
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 20px;
+    gap: 32px;
+  }
+
+  .hero-text {
+    left: 0; /* Reseta o 'left: 20%' do desktop */
+    width: 100%;
+    padding: 0;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero-text p {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* ===== SEÇÃO SOBRE ===== */
+  .sobre {
+    padding: 60px 0;
+  }
+  .sobre-content {
+    flex-direction: column;
+  }
+  .sobre-title,
+  .sobre h2 {
+    font-size: 1.8rem;
+  }
+  .sobre-description,
+  .sobre p,
+  .sobre li {
+    font-size: 1rem;
+  }
+  .sobre-img {
+    max-width: 100%;
+  }
+  
+  /* ===== SEÇÃO BENEFÍCIOS ===== */
+  .beneficios-grid {
+    grid-template-columns: 1fr; /* Força uma coluna */
+  }
+  
+  /* ===== SEÇÃO DENTISTAS ===== */
+  .dentistas-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .dentistas-image {
+    min-width: 100%;
+    width: 100%;
+    height: auto;
+    order: -1; /* Coloca a imagem acima do texto */
+  }
+  .dentistas-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* ===== SEÇÃO EMPRESAS ===== */
+  .empresas-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .empresas-card {
+    display: none; /* Esconde o card cinza da esquerda */
+  }
+  
+  /* ===== SEÇÃO SERVIÇOS ===== */
+  .servicos-wrapper {
+    flex-direction: column;
+  }
+  .servicos-right-content {
+    order: -1; /* Imagem acima do texto */
+    width: 100%;
+  }
+  .main-image-placeholder img {
+    margin: 0 auto;
+  }
+  
+/* ===== SEÇÃO DEPOIMENTOS (VERSÃO STEPPER JS) ===== */
+  
+  .depoimentos-wrapper {
+    /* O wrapper não precisa de padding, pois o card terá */
+    padding: 0;
+    box-sizing: border-box;
+    /* O overflow: hidden já está no style.css e corta os slides */
+  }
+
+  /* Reconfigura o grid para o STEPPER */
+  .depoimentos-grid {
+    /* O JS vai definir a largura (ex: 600%) */
+    width: auto; 
+    flex-wrap: nowrap; 
+    gap: 0; 
+    /* Transição suave para o 'transform' do JS */
+    transition: transform 0.5s ease-in-out;
+  }
+
+  /* Define cada depoimento para ocupar 1/6 da largura do grid */
+  .depoimento {
+    /* *** A CORREÇÃO *** */
+    /* flex: 1 faz com que 6 cards dividam 600% = 100% cada */
+    flex: 1 0 0;
+    max-width: none; /* Remove o max-width de 100% */
+    box-sizing: border-box;
+    
+    /* O padding é aplicado DENTRO do card para criar o 'gap' */
+    padding: 0 20px; 
+  }
+  
+  /* Esconde os clones (o stepper mobile não usa eles) */
+  .depoimento.cloned-node {
+     display: none; 
+  }
+  
+  /* ===== SEÇÃO CTA FINAL ===== */
+  .cta-negocio-section h1 {
+    font-size: 2em;
+  }
+  .cta-buttons {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  .cta-buttons a {
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+  }
+  .features-list {
+    flex-direction: column; 
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* ===== FOOTER ===== */
+  .footer-content {
+    flex-direction: column;
+    gap: 35px;
+  }
+  .footer-col {
+    min-width: 100%;
+  }
+  .col-info {
+    max-width: 100%;
+  }
+  .social-icons {
+    justify-content: flex-start;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .copyright {
+    margin-bottom: 0;
+  }
+  .legal-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
