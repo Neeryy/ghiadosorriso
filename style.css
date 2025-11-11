@@ -1,7 +1,9 @@
 /* ====== RESET ====== */
+/* ====== RESET ====== */
 * {
   margin: 0;
-  padding: 8px 16px 8px 16px;
+  padding: 0; /* <-- CORRIGIDO AQUI */
+  box-sizing: border-box; /* <-- ESSENCIAL PARA LAYOUT */
   
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -22,6 +24,7 @@ body.loaded {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 16px; /* <-- ADICIONE O PADDING AQUI */
 }
 
 /* ====== HEADER ====== */
@@ -60,8 +63,7 @@ body.loaded {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
-  transition: padding 0.3s ease;
+  /* O padding agora vem do .container */
 }
 
 .header.scrolled .header-content {
@@ -167,7 +169,7 @@ body.loaded {
   position: relative;
   background: linear-gradient(180deg, #FFFFFF 0%, rgba(239, 246, 255, 0.3) 50%, #FFFFFF 100%);
   overflow: hidden;
-  padding: 8px 16px 8px 16px;
+  padding: 8px 0; /* Remove padding lateral */
 }
 
 /* container flexível */
@@ -186,7 +188,7 @@ body.loaded {
 /* ===== TEXTO ===== */
 .hero-text {
   flex: 1;
-  padding: 16px 0px 16px 0;
+  padding: 16px 0;
   position: relative;
   z-index: 3;
   left: 20%;
@@ -236,6 +238,7 @@ body.loaded .hero-text h1 {
   left: 259px;
   border-radius: 44739200px;
   border-width: 1px;
+  padding: 8px 16px; /* Adiciona padding de volta localmente */
 }
 
 body:not(.loaded) .text-tecnologia {
@@ -251,6 +254,7 @@ body.loaded .text-tecnologia {
   font-size: 1.1rem;
   margin-bottom: 25px;
   max-width: 500px;
+  padding: 8px 0; /* Remove padding lateral */
 }
 
 /* ===== HERO BUTTONS ===== */
@@ -482,6 +486,7 @@ body.loaded .hero-image{
   margin-bottom: 8px;
   letter-spacing: 2px;
   color: rgba(255, 255, 255, 0.85);
+  padding: 8px 0;
 }
 
 .sobre-title {
@@ -490,6 +495,7 @@ body.loaded .hero-image{
   margin-bottom: 24px;
   line-height: 1.2;
   color: #fff;
+  padding: 8px 0;
 }
 
 .sobre-description {
@@ -498,6 +504,7 @@ body.loaded .hero-image{
   margin-bottom: 32px;
   color: rgba(255, 255, 255, 0.95);
   font-weight: 400;
+  padding: 8px 0;
 }
 
 .sobre-list {
@@ -514,6 +521,7 @@ body.loaded .hero-image{
   font-weight: 400;
   color: rgba(255, 255, 255, 0.95);
   transition: transform 0.3s ease;
+  padding: 8px 0;
 }
 
 .sobre-list li:hover {
@@ -603,7 +611,7 @@ body.loaded .hero-image{
 }
 
 .beneficios-icon {
-  padding: 0px 0px 0px 0;
+  padding: 0;
   position: absolute;
   top: 0;
   margin: 0;
@@ -704,7 +712,7 @@ body.loaded .hero-image{
   display: flex;
   align-items: center;
   width: 100%;
-  padding: initial;
+  padding: 0;
 }
 
 .beneficio-card-header img {
@@ -721,11 +729,13 @@ body.loaded .hero-image{
 .beneficio-card-header h4 {
   margin: 0;
   font-size: 16px;
+  padding: 0;
 }
 
 .beneficio-card p {
   text-align: left;
   font-size: 18px;
+  padding: 8px 0;
 }
 
 /* Delay progressivo para cards */
@@ -950,7 +960,7 @@ body.loaded .hero-image{
   color: #4a5568;
   line-height: 1.2;
   margin-bottom: 40px;
-  padding: 0;
+  padding: 8px 0;
 }
 
 .btn-empresa {
@@ -964,6 +974,7 @@ body.loaded .hero-image{
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  z-index: 9999;
 }
 
 .btn-empresa:hover {
@@ -1055,7 +1066,7 @@ body.loaded .hero-image{
 }
 
 .empresas-icon {
-  padding: 0px 0px 0px 0;
+  padding: 0;
   position: absolute;
   bottom: 0;
   margin: 0;
@@ -1117,7 +1128,7 @@ body.loaded .hero-image{
 .nossos-servicos-section {
   background: linear-gradient(180deg, #efefef 0%, #F9FAFB 100%);
   color: #333;
-  padding: 80px 20px;
+  padding: 80px 0;
   font-family: Arial, sans-serif;
 }
 
@@ -1126,7 +1137,7 @@ body.loaded .hero-image{
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  flex-wrap: wrap; 
+ 
   align-items: flex-start;
 }
 
@@ -1147,6 +1158,7 @@ body.loaded .hero-image{
   width: 100%;
   margin-top: 0; 
   text-align: right;
+  padding: 8px 0;
 }
 
 .main-image-placeholder img {
@@ -1165,6 +1177,7 @@ body.loaded .hero-image{
   display: flex; 
   align-items: flex-start;
   margin-bottom: 16px;
+  padding: 8px 0;
 }
 
 .servico-item:not(.animate-in) {
@@ -1341,6 +1354,7 @@ body.loaded .hero-image{
   text-align: center;
   vertical-align: middle;
   color: rgba(8, 152, 231, 1);
+  padding: 8px 0;
 }
 
 .depoimento span {
@@ -1356,6 +1370,7 @@ body.loaded .hero-image{
   letter-spacing: 0%;
   vertical-align: middle;
   color: rgba(106, 114, 130, 1);
+  padding: 8px 0;
 }
 
 .depoimentos-aurea {
@@ -1377,7 +1392,7 @@ body.loaded .hero-image{
   background-size: 400% 400%;
   animation: gradient-animation 15s ease infinite;
   color: #fff;
-  padding: 100px 20px; 
+  padding: 100px 0; 
   text-align: center; 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   overflow: hidden; 
@@ -1395,6 +1410,7 @@ body.loaded .hero-image{
   font-size: 3.0em;
   font-weight: 700;
   width: 100%;
+  padding: 8px 0;
 }
 
 .cta-negocio-section h1:not(.animate-in) {
@@ -1412,6 +1428,7 @@ body.loaded .hero-image{
   margin-bottom: 16px;
   opacity: 1;
   font-weight: 400;
+  padding: 8px 0;
 }
 
 .cta-description:not(.animate-in) {
@@ -1447,6 +1464,7 @@ body.loaded .hero-image{
   display: flex;
   align-items: center;
   gap: 8px;
+  padding: 8px 0;
 }
 
 .feature-item i {
@@ -1529,6 +1547,7 @@ body.loaded .btn-cta-primary {
   font-size: 18px;
   opacity: 0.8;
   width: 100%;
+  padding: 8px 0;
 }
 
 @media (max-width: 768px) {
@@ -2052,7 +2071,8 @@ section {
   box-shadow: none;
 }
 
-
 /* === Nav hover safety (do not intercept click) === */
 .nav a { position: relative; z-index: 0; }
 .nav a::before { pointer-events: none; z-index: -1; }
+
+/* O '}' extra da linha 2059 FOI REMOVIDO DAQUI */

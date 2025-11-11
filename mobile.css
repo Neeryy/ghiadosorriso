@@ -267,11 +267,16 @@ body.nav-open .nav-toggle::after {
     align-items: center;
     text-align: center;
   }
-  .dentistas-image {
+.dentistas-image {
     min-width: 100%;
     width: 100%;
     height: auto;
     order: -1; 
+    
+    /* ESSAS 3 LINHAS CENTRALIZAM A IMAGEM */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .dentistas-image img {
     width: 100%;
@@ -315,11 +320,30 @@ body.nav-open .nav-toggle::after {
     text-align: center;
     gap: 10px; /* Adiciona espaço entre ícone e texto */
   }
-  .servicos-right-content {
+/* AQUI ESTÁ A CORREÇÃO (no seletor) */
+  .servicos-right-content.image-column {
     order: -1; 
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+.main-image-placeholder {
+    text-align: center; /* Anula o 'text-align: right' do desktop */
+  }
+  
   .main-image-placeholder img {
+    margin: 0 auto;
+  }
+
+  /* ================================================
+  AQUI ESTÁ A NOVA REGRA
+  ================================================
+  */
+.main-image-placeholder {
+    /* Anula o text-align: right do style.css */
+    text-align: center;
+    /* Centraliza a imagem (que é um display: block) */
     margin: 0 auto;
   }
   
@@ -369,29 +393,41 @@ body.nav-open .nav-toggle::after {
     gap: 10px;
   }
   
-  /* ===== FOOTER ===== */
+/* ===== FOOTER ===== */
   .footer-content {
     flex-direction: column;
     gap: 35px;
-    /* ALINHAMENTO: Centraliza colunas do footer */
     align-items: center;
   }
+  
+  .footer-content .footer-col:nth-child(2),
+  .footer-content .footer-col:nth-child(3) {
+    display: none;
+  }
+  
   .footer-col {
     min-width: 100%;
-    /* ALINHAMENTO: Centraliza texto do footer */
     text-align: center;
   }
+
+  /* ================================================
+  AQUI ESTÁ A NOVA REGRA:
+  Centraliza os <li> de contato
+  ================================================
+  */
+  .col-contact .contact-item {
+    justify-content: center; /* Centraliza o ícone + texto como um bloco */
+  }
+
   .col-info {
     max-width: 100%;
   }
   .social-icons {
-    /* ALINHAMENTO: Centraliza ícones sociais */
     justify-content: center;
   }
   .footer-bottom {
     flex-direction: column;
     gap: 15px;
-    /* ALINHAMENTO: Centraliza copyright e links */
     align-items: center;
   }
   .copyright {
@@ -400,7 +436,6 @@ body.nav-open .nav-toggle::after {
   .legal-links {
     display: flex;
     flex-direction: column;
-    /* ALINHAMENTO: Centraliza links legais */
     align-items: center;
     gap: 8px;
   }
