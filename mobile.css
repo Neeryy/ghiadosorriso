@@ -251,6 +251,9 @@ body.nav-open .nav-toggle::after {
   }
   
   /* ===== SEÇÃO DENTISTAS ===== */
+  .dentistas {
+  padding: 3px 0; /* O original era 80px */
+  }
   .dentistas-content {
     flex-direction: column;
     gap: 40px;
@@ -284,6 +287,9 @@ body.nav-open .nav-toggle::after {
   }
   
   /* ===== SEÇÃO EMPRESAS ===== */
+  .empresas {
+  padding: 3px 0 0; /* O original era 100px */
+  }
   .empresas-content {
     flex-direction: column;
     align-items: center; /* Já estava correto */
