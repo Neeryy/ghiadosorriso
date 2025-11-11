@@ -910,7 +910,6 @@ body.loaded .hero-image{
 /* ====== EMPRESAS ====== */
 .empresas {
   background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
-  padding: 100px 0 0;
   position: relative;
   overflow: hidden;
 }
@@ -922,6 +921,7 @@ body.loaded .hero-image{
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 40px;
+  margin-bottom: 60px;
 }
 
 .empresas-text {
