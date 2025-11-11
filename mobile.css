@@ -7,20 +7,17 @@
 
   /* ===== CORREÇÕES DE PERFORMANCE (Mobile) ===== */
   
-  /* Desabilita animações de brilho */
   .beneficio-card::before,
   .depoimento::before {
     display: none;
   }
   
-  /* Desabilita gradiente animado do H1 (economia de bateria) */
   .hero-text h1 {
     animation: none !important;
     background: #004aad !important;
     -webkit-text-fill-color: #004aad !important;
   }
   
-  /* Desabilita animações de pulso (economia de bateria) */
   body.loaded .btn-primary,
   body.loaded .btn-cta-primary {
     animation: none;
@@ -29,7 +26,7 @@
   /* ===== HEADER E MENU HAMBÚRGUER ===== */
   
   .header-content {
-    flex-direction: row; /* Mantém logo e botão na mesma linha */
+    flex-direction: row; 
     justify-content: space-between;
     align-items: center;
     padding: 12px 0;
@@ -37,14 +34,13 @@
   
   .logo {
     width: 120px;
-    z-index: 1003; /* Garante que o logo fique acima do overlay */
+    z-index: 1003; 
   }
 
 /* --- Estilo do Botão Hambúrguer --- */
   
-/* Transforma o botão em um ícone de 3 linhas (CSS) */
 .nav-toggle {
-    display: block; /* Mostra o botão no mobile */
+    display: block; 
     position: relative;
     width: 28px;
     height: 22px;
@@ -54,11 +50,9 @@
     z-index: 1002;
     padding: 0;
     margin: 0;
-    /* Garante que o botão não seja afetado pelo padding do reset */
     margin: 8px 16px;
 }
 
-/* Barras de cima e de baixo (criadas no botão) */
 .nav-toggle::before,
 .nav-toggle::after {
     content: '';
@@ -66,48 +60,39 @@
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: #007bff; /* Cor do ícone */
+    background-color: #007bff; 
     border-radius: 3px;
     transition: all 0.3s ease;
-    padding: 0; /* <<< CORREÇÃO AQUI (Anula o padding: 8px 16px do reset) */
+    padding: 0; 
 }
 
-/* Barra do meio (usa o seu ícone .bi-list) */
 .nav-toggle .bi-list {
     display: block;
     position: absolute;
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: #007bff; /* Cor do ícone */
+    background-color: #007bff; 
     border-radius: 3px;
     transition: all 0.3s ease;
-    
-    /* Posição */
     top: 50%;
     transform: translateY(-50%);
-    
-    /* Esconde o ícone real do bootstrap e usa só a caixa */
     font-size: 0; 
     color: transparent;
-    
-    padding: 0; /* <<< CORREÇÃO AQUI (Anula o padding: 8px 16px do reset) */
+    padding: 0; 
 }
-/* Esconde o pseudo-elemento ::before do bootstrap icon */
 .nav-toggle .bi-list::before {
     display: none;
 }
-
 .nav-toggle::before { top: 0; }
 .nav-toggle::after { bottom: 0; }
 
 /* --- Animação do 'X' quando o menu está aberto --- */
-
 body.nav-open .nav-toggle::before {
     top: 50%;
     transform: translateY(-50%) rotate(45deg);
 }
-body.nav-open .nav-toggle .bi-list { /* Barra do meio (o <i>) */
+body.nav-open .nav-toggle .bi-list {
     opacity: 0;
     transform: translateX(-10px);
 }
@@ -122,21 +107,17 @@ body.nav-open .nav-toggle::after {
     position: fixed;
     top: 0;
     right: 0;
-    width: 70%; /* Largura do menu */
+    width: 70%; 
     max-width: 300px;
-    height: 100vh; /* Altura total */
+    height: 100vh; 
     background: #fff;
-    
-    /* Layout do menu */
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    
     padding: 80px 20px 20px;
     gap: 15px;
-    
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    transform: translateX(100%); /* Começa escondido */
+    transform: translateX(100%); 
     transition: transform 0.3s ease-out;
     z-index: 1001;
   }
@@ -145,13 +126,12 @@ body.nav-open .nav-toggle::after {
     font-size: 1.1rem;
     padding: 10px 15px;
     width: 100%;
-    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+    box-sizing: border-box; 
   }
 
   /* --- Overlay (fundo escuro) --- */
-
   .nav-overlay {
-    display: block; /* Habilita o overlay no mobile */
+    display: block; 
     position: fixed;
     top: 0;
     left: 0;
@@ -159,35 +139,33 @@ body.nav-open .nav-toggle::after {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
-    pointer-events: none; /* Não clicável por padrão */
+    pointer-events: none; 
     transition: opacity 0.3s ease;
     z-index: 1000;
   }
 
   /* --- Estilos do Menu Aberto (via classe 'nav-open' no body) --- */
   
-  /* ESTA É A CORREÇÃO PARA TRAVAR A ROLAGEM */
   body.nav-open {
-    overflow: hidden;
+    overflow: hidden; /* Trava a rolagem */
   }
   
   body.nav-open .nav {
-    transform: translateX(0); /* Mostra o menu */
+    transform: translateX(0); 
   }
 
   body.nav-open .nav-overlay {
     opacity: 1;
-    pointer-events: auto; /* Permite clicar para fechar */
+    pointer-events: auto; 
   }
 
   
   /* ===== HERO SECTION ===== */
   
-  /* Esta regra substitui o bloco de JavaScript! */
   .hero-image,
   .mulher-sorrindo,
   .hero-decorative {
-    display: none !important; /* Esconde imagens da hero no mobile */
+    display: none !important; 
   }
   
   .hero {
@@ -203,7 +181,7 @@ body.nav-open .nav-toggle::after {
   }
 
   .hero-text {
-    left: 0; /* Reseta o 'left: 20%' do desktop */
+    left: 0; 
     width: 100%;
     padding: 0;
   }
@@ -221,6 +199,8 @@ body.nav-open .nav-toggle::after {
     justify-content: center;
     flex-direction: column;
     gap: 15px;
+    /* ALINHAMENTO: Centraliza os botões */
+    align-items: center; 
   }
   
   /* ===== SEÇÃO SOBRE ===== */
@@ -229,6 +209,18 @@ body.nav-open .nav-toggle::after {
   }
   .sobre-content {
     flex-direction: column;
+    /* ALINHAMENTO: Centraliza a imagem e o texto */
+    align-items: center;
+  }
+  .sobre-text {
+    /* ALINHAMENTO: Centraliza o texto */
+    text-align: center;
+  }
+  .sobre-text ul {
+    /* ALINHAMENTO: Alinha a lista no centro */
+    display: inline-block;
+    text-align: left; /* Mantém o texto da lista alinhado à esquerda */
+    padding-left: 20px; /* Adiciona recuo para os <li> */
   }
   .sobre-title,
   .sobre h2 {
@@ -245,19 +237,41 @@ body.nav-open .nav-toggle::after {
   
   /* ===== SEÇÃO BENEFÍCIOS ===== */
   .beneficios-grid {
-    grid-template-columns: 1fr; /* Força uma coluna */
+    grid-template-columns: 1fr; 
+  }
+  .beneficio-card {
+    /* ALINHAMENTO: Centraliza o conteúdo dos cards */
+    text-align: center;
+  }
+  .beneficio-card-header {
+    /* ALINHAMENTO: Empilha o ícone e o título */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
   
   /* ===== SEÇÃO DENTISTAS ===== */
   .dentistas-content {
     flex-direction: column;
     gap: 40px;
+    /* ALINHAMENTO: Centraliza os blocos */
+    align-items: center;
+  }
+  .dentistas-text {
+    /* ALINHAMENTO: Centraliza o texto */
+    text-align: center;
+  }
+  .dentistas-list li {
+    /* ALINHAMENTO: Empilha ícone e texto */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
   .dentistas-image {
     min-width: 100%;
     width: 100%;
     height: auto;
-    order: -1; /* Coloca a imagem acima do texto */
+    order: -1; 
   }
   .dentistas-image img {
     width: 100%;
@@ -267,61 +281,75 @@ body.nav-open .nav-toggle::after {
   /* ===== SEÇÃO EMPRESAS ===== */
   .empresas-content {
     flex-direction: column;
+    align-items: center; /* Já estava correto */
+  }
+  .empresas-text {
+    /* ALINHAMENTO: Centraliza o texto */
+    text-align: center;
+  }
+  .empresas-lista li {
+    /* ALINHAMENTO: Empilha ícone e texto */
+    flex-direction: column;
     align-items: center;
+    text-align: center;
+    gap: 10px; /* Adiciona espaço entre ícone e texto */
   }
   .empresas-card {
-    display: none; /* Esconde o card cinza da esquerda */
+    display: none; 
   }
   
   /* ===== SEÇÃO SERVIÇOS ===== */
   .servicos-wrapper {
     flex-direction: column;
+    /* ALINHAMENTO: Centraliza os blocos */
+    align-items: center;
+  }
+  .servicos-left-content {
+    /* ALINHAMENTO: Centraliza o texto */
+    text-align: center;
+  }
+  .servico-item {
+    /* ALINHAMENTO: Empilha ícone e texto */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px; /* Adiciona espaço entre ícone e texto */
   }
   .servicos-right-content {
-    order: -1; /* Imagem acima do texto */
+    order: -1; 
     width: 100%;
   }
   .main-image-placeholder img {
     margin: 0 auto;
   }
   
-/* ===== SEÇÃO DEPOIMENTOS (VERSÃO STEPPER JS) ===== */
+  /* ===== SEÇÃO DEPOIMENTOS (VERSÃO STEPPER JS) ===== */
   
   .depoimentos-wrapper {
-    /* O wrapper não precisa de padding, pois o card terá */
     padding: 0;
     box-sizing: border-box;
-    /* O overflow: hidden já está no style.css e corta os slides */
   }
 
-  /* Reconfigura o grid para o STEPPER */
   .depoimentos-grid {
-    /* O JS vai definir a largura (ex: 600%) */
     width: auto; 
     flex-wrap: nowrap; 
     gap: 0; 
-    /* Transição suave para o 'transform' do JS */
     transition: transform 0.5s ease-in-out;
   }
 
-  /* Define cada depoimento para ocupar 1/6 da largura do grid */
   .depoimento {
-    /* *** A CORREÇÃO *** */
-    /* flex: 1 faz com que 6 cards dividam 600% = 100% cada */
     flex: 1 0 0;
-    max-width: none; /* Remove o max-width de 100% */
+    max-width: none;
     box-sizing: border-box;
-    
-    /* O padding é aplicado DENTRO do card para criar o 'gap' */
-    padding: 0 20px; 
+    padding: 0 20px; /* Espaçamento lateral */
   }
   
-  /* Esconde os clones (o stepper mobile não usa eles) */
   .depoimento.cloned-node {
      display: none; 
   }
   
   /* ===== SEÇÃO CTA FINAL ===== */
+  /* Esta seção já é centralizada por padrão */
   .cta-negocio-section h1 {
     font-size: 2em;
   }
@@ -345,20 +373,26 @@ body.nav-open .nav-toggle::after {
   .footer-content {
     flex-direction: column;
     gap: 35px;
+    /* ALINHAMENTO: Centraliza colunas do footer */
+    align-items: center;
   }
   .footer-col {
     min-width: 100%;
+    /* ALINHAMENTO: Centraliza texto do footer */
+    text-align: center;
   }
   .col-info {
     max-width: 100%;
   }
   .social-icons {
-    justify-content: flex-start;
+    /* ALINHAMENTO: Centraliza ícones sociais */
+    justify-content: center;
   }
   .footer-bottom {
     flex-direction: column;
-    align-items: flex-start;
     gap: 15px;
+    /* ALINHAMENTO: Centraliza copyright e links */
+    align-items: center;
   }
   .copyright {
     margin-bottom: 0;
@@ -366,7 +400,8 @@ body.nav-open .nav-toggle::after {
   .legal-links {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    /* ALINHAMENTO: Centraliza links legais */
+    align-items: center;
     gap: 8px;
   }
 }
