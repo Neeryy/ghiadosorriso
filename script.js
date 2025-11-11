@@ -1,5 +1,5 @@
 /* =================================================== */
-/* SCRIPT.JS FINAL E CORRIGIDO
+/* SCRIPT.JS FINAL (COM RESIZE LISTENER)
 /* =================================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -92,29 +92,33 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
-// --- LÓGICA MOBILE (STEPPER DE 3 SEGUNDOS) ---
+  // ===== 3. LÓGICA DE NAVEGAÇÃO ATIVA (CLICK + SCROLL) =====
+  const navLinks = document.querySelectorAll('.nav a[href^="#"]'); 
+  const sections = document.querySelectorAll('section[id], #home');
+
+  if (navLinks.length > 0 && sections.length > 0) {
     
-    let currentIndex = 0;
-   
+    const observerNavOptions = {
+      rootMargin: '-40% 0px -60% 0px', 
+      threshold: 0
+    };
     
-    // O CSS (mobile.css) vai esconder os clones.
-    // O JS só precisa aplicar o transform.
+    const navObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerNavOptions);
     
-    setInterval(() => {
-      currentIndex++;
-      
-      if (currentIndex >= totalSlides) {
-        currentIndex = 0; // Volta ao início
-      }
-      
-      // *** ESTA É A CORREÇÃO ***
-      // Calcula o offset exato em pixels, baseado na largura do wrapper
-      const cardWidth = depoimentosWrapper.offsetWidth;
-      const offsetPixels = -currentIndex * cardWidth;
-      
-      depoimentosGrid.style.transform = `translateX(${offsetPixels}px)`;
-      
-    }, 3000); // Muda a cada 3 segundos
+    sections.forEach(section => navObserver.observe(section));
+  }
   
 
   // ===== 4. LÓGICA DE SCROLL SUAVE (SMOOTH SCROLL) =====
@@ -159,17 +163,26 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 
-// ===== 5. LÓGICA DO CARROSSEL DE DEPOIMENTOS (DESKTOP/MOBILE) =====
+  // ===== 5. LÓGICA DO CARROSSEL DE DEPOIMENTOS (RESPONSIVO) =====
   const depoimentosWrapper = document.querySelector('.depoimentos-wrapper');
   const depoimentosGrid = document.querySelector('.depoimentos-grid');
-  // Seleciona apenas os cards originais (o CSS mobile esconde os clones)
   const depoimentosCards = document.querySelectorAll('.depoimento:not(.cloned-node)');
+  
+  // Referência para o timer do mobile
+  let mobileCarouselInterval = null;
+  // Guarda o estado atual (true = desktop, false = mobile)
+  let isDesktop = window.innerWidth > 768;
 
-  if (depoimentosWrapper && depoimentosGrid && depoimentosCards.length > 0) {
-    
-    // Verifica o tamanho da tela para decidir a lógica
+  function setupCarousel() {
+    // 1. ZERA TUDO (limpa clones, timers e estilos inline)
+    clearInterval(mobileCarouselInterval);
+    depoimentosGrid.querySelectorAll('.cloned-node').forEach(node => node.remove());
+    depoimentosGrid.style.animation = '';
+    depoimentosGrid.style.width = '';
+    depoimentosGrid.style.transform = '';
+
+    // 2. VERIFICA O TAMANHO E RODA A LÓGICA CORRETA
     if (window.innerWidth > 768) {
-      
       // --- LÓGICA DESKTOP (SCROLL CONTÍNUO) ---
       
       // Duplica os cards
@@ -179,60 +192,74 @@ document.addEventListener('DOMContentLoaded', function() {
         depoimentosGrid.appendChild(clone);
       });
       
-      // Calcula a duração da animação
       const totalCards = depoimentosCards.length * 2;
-      const animationDuration = totalCards * 4; // 4 segundos por card
-      
+      const animationDuration = totalCards * 4; // 4s por card
       depoimentosGrid.style.animation = `scrollDepoimentos ${animationDuration}s linear infinite`;
-      
-      // Pausa a animação ao passar o mouse
-      depoimentosGrid.addEventListener('mouseenter', function() {
-        this.style.animationPlayState = 'paused';
-      });
-      
-      depoimentosGrid.addEventListener('mouseleave', function() {
-        this.style.animationPlayState = 'running';
-      });
 
     } else {
-      
       // --- LÓGICA MOBILE (STEPPER DE 3 SEGUNDOS) ---
       
       let currentIndex = 0;
       const totalSlides = depoimentosCards.length; // Ex: 6 slides
       
-      // *** A CORREÇÃO (Parte 1) ***
       // Define a largura total do grid (ex: 6 slides = 600%)
-      // Isso força os cards (com flex: 1) a terem 100% de largura cada.
       depoimentosGrid.style.width = `${totalSlides * 100}%`;
       
-      setInterval(() => {
+      mobileCarouselInterval = setInterval(() => {
         currentIndex++;
-        
         if (currentIndex >= totalSlides) {
           currentIndex = 0; // Volta ao início
         }
-        
-        // *** A CORREÇÃO (Parte 2) ***
-        // Move o grid em uma fração da sua largura total
-        // (ex: 1/6, 2/6, 3/6... que é -16.66%, -33.33%)
+        // Move o grid em frações (ex: 1/6, 2/6... que é -16.66%, -33.33%)
         const offsetPercent = -currentIndex * (100 / totalSlides);
-        
         depoimentosGrid.style.transform = `translateX(${offsetPercent}%)`;
-        
       }, 3000); // Muda a cada 3 segundos
     }
   }
-});
 
-  // ===== 6. LÓGICA DO HEADER (EFEITO 'SCROLLED') =====
-  window.addEventListener('scroll', function() {
-    const header = document.querySelector('.header');
-    if (header) {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+  // --- OUVIR O RESIZE (A MÁGICA ACONTECE AQUI) ---
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const newIsDesktop = window.innerWidth > 768;
+      // Só roda o setup DE NOVO se o estado mudou (cruzou a barreira dos 768px)
+      if (newIsDesktop !== isDesktop) {
+        isDesktop = newIsDesktop;
+        setupCarousel();
       }
+    }, 250); // Debounce de 250ms
+  });
+
+  // --- HOVER (PAUSA) ---
+  // (Listeners de hover ficam fora do setup)
+  depoimentosGrid.addEventListener('mouseenter', function() {
+    if (isDesktop) { // Só pausa no desktop
+      this.style.animationPlayState = 'paused';
     }
   });
+  
+  depoimentosGrid.addEventListener('mouseleave', function() {
+    if (isDesktop) { // Só pausa no desktop
+      this.style.animationPlayState = 'running';
+    }
+  });
+
+  // --- CHAMADA INICIAL ---
+  // Roda o setup na primeira vez que a página carrega
+  setupCarousel();
+
+}); // FIM DO DOMCONTENTLOADED PRINCIPAL
+
+
+// ===== 6. LÓGICA DO HEADER (EFEITO 'SCROLLED') =====
+window.addEventListener('scroll', function() {
+  const header = document.querySelector('.header');
+  if (header) {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+});
