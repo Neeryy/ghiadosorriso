@@ -1170,6 +1170,7 @@ body.loaded .hero-image{
   align-items: flex-start;
   margin-bottom: 16px;
   padding: 8px 0;
+  gap: 15px;
 }
 
 .servico-item:not(.animate-in) {
@@ -2067,3 +2068,52 @@ section {
 .nav a { position: relative; z-index: 0; }
 .nav a::before { pointer-events: none; z-index: -1; }
 
+/* ================================================
+  EFEITO RASTRO "GOOEY" (MOUSE/TOUCH)
+================================================
+*/
+
+/* O contêiner que "borra" os pontos */
+#trail-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998; /* Fica atrás dos pontos, mas acima de tudo */
+  pointer-events: none;
+  
+  /* A MÁGICA: Aplica o filtro SVG */
+  filter: url(#gooey);
+}
+
+/* Os pontos (agora são brancos, mas ficarão azuis pelo filtro) */
+.trail-dot {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 40px; /* Tamanho maior para borrar */
+  height: 40px;
+  background-color: #0099ff; /* Cor azul do site */
+  border-radius: 50%;
+  z-index: 9999; 
+  pointer-events: none; 
+  
+  /* Animação para desaparecer */
+  animation: fadeAndShrink 1s linear forwards;
+  
+  padding: 0 !important; 
+  margin: 0 !important;
+}
+
+/* O 'transform: scale(0)' é o que faz o rastro encolher */
+@keyframes fadeAndShrink {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}

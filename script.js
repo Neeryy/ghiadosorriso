@@ -1,5 +1,5 @@
 /* =================================================== */
-/* SCRIPT.JS FINAL (COM RESIZE LISTENER)
+/* SCRIPT.JS FINAL (COM RASTRO SÓ NO DESKTOP)
 /* =================================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -248,6 +248,60 @@ document.addEventListener('DOMContentLoaded', function() {
   // --- CHAMADA INICIAL ---
   // Roda o setup na primeira vez que a página carrega
   setupCarousel();
+
+  // ================================================
+  // ===== 7. LÓGICA DO RASTRO DE COR (DESKTOP-ONLY) =====
+  // ================================================
+  
+  // Detecta se é um dispositivo de toque
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  
+  // Só executa o código se NÃO FOR um dispositivo de toque
+  if (!isTouchDevice) {
+    const trailContainer = document.getElementById('trail-container');
+
+    // Função para criar o "ponto" do rastro
+    function createTrailDot(x, y) {
+      const dot = document.createElement('div');
+      dot.classList.add('trail-dot');
+      
+      // Posiciona o ponto (ajustando para o centro)
+      dot.style.left = (x - 20) + 'px'; // 20 é metade da largura (40px)
+      dot.style.top = (y - 20) + 'px'; // 20 é metade da altura (40px)
+      
+      if (trailContainer) {
+        trailContainer.appendChild(dot);
+      }
+      
+      // Remove o ponto do DOM após a animação (1000ms = 1s)
+      setTimeout(() => {
+        if (trailContainer && trailContainer.contains(dot)) {
+          trailContainer.removeChild(dot);
+        }
+      }, 1000);
+    }
+
+    // --- Performance: Throttling (Limitação) ---
+    let throttleTimer = false;
+    function throttledCreateDot(x, y) {
+      if (throttleTimer) return; 
+      throttleTimer = true;
+      
+      createTrailDot(x, y);
+      
+      setTimeout(() => {
+        throttleTimer = false; 
+      }, 1); // Cria 1 ponto a cada 25ms
+    }
+
+    // Listener para Mouse (Desktop)
+    window.addEventListener('mousemove', (e) => {
+      throttledCreateDot(e.clientX, e.clientY);
+    });
+    
+    // O listener de 'touchmove' foi removido
+  }
+
 
 }); // FIM DO DOMCONTENTLOADED PRINCIPAL
 
