@@ -825,9 +825,8 @@ body.loaded .hero-image{
 }
 
 .dentistas-list li > img {
-  width: 44px;
-  height: 44px;
-  background: #e3f2fd;
+  width: 70px;
+  height: 70px;
   border-radius: 12px;
   padding: 10px;
   flex-shrink: 0;
@@ -1024,10 +1023,10 @@ body.loaded .hero-image{
 }
 
 .icon-box {
-  background: #f3f7ff;
+  background: #a5c2f17a;
   border-radius: 12px;
-  width: 48px;
-  height: 48px;
+  width: 55px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1042,8 +1041,8 @@ body.loaded .hero-image{
 }
 
 .icon-box img {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   padding: 0;
 }
 
@@ -1052,8 +1051,8 @@ body.loaded .hero-image{
 }
 
 .icon-box2 img {
-  width: 41px;
-  height: 41px;
+  width: 60px;
+  height: 60px;
   padding: 0;
 }
 
@@ -1632,8 +1631,8 @@ body.loaded .btn-cta-primary {
 }
 
 .logo-icon {
-  width: 36px;
-  height: 36px;
+  width: 45px;
+  height: 45px;
   margin-right: 12px;
   background-color: #0099ff;
   border-radius: 8px;
@@ -2116,4 +2115,28 @@ section {
     transform: scale(0);
     opacity: 0;
   }
+}
+
+/* ================================================
+  CORREÇÃO DE ESPAÇAMENTO (SEÇÃO SOBRE)
+================================================ */
+
+/* Adiciona espaço abaixo do "SOBRE O" (o h3) */
+.sobre-text h3 {
+  margin-bottom: 8px; 
+}
+
+/* Adiciona espaço abaixo do Título (o .textoghia) */
+.textoghia { 
+  margin-bottom: 24px;
+}
+
+/* Adiciona espaço abaixo do parágrafo (o .paragrafoghia) */
+.paragrafoghia {
+  margin-bottom: 32px;
+}
+
+/* Adiciona espaço entre os itens da lista (os <li>) */
+.sobre-text ul li {
+  margin-bottom: 16px;
 }

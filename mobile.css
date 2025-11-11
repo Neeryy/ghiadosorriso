@@ -213,14 +213,14 @@ body.nav-open .nav-toggle::after {
     align-items: center;
   }
   .sobre-text {
-    /* ALINHAMENTO: Centraliza o texto */
-    text-align: center;
+    /* MUDANÇA AQUI: Alinha o texto à esquerda */
+    text-align: left;
   }
   .sobre-text ul {
-    /* ALINHAMENTO: Alinha a lista no centro */
-    display: inline-block;
-    text-align: left; /* Mantém o texto da lista alinhado à esquerda */
-    padding-left: 20px; /* Adiciona recuo para os <li> */
+    /* MUDANÇA AQUI: Remove o 'display: inline-block' que era para centralizar */
+    display: block; 
+    text-align: left; 
+    padding-left: 20px !important; /* Mantém o recuo da lista */
   }
   .sobre-title,
   .sobre h2 {
@@ -252,7 +252,7 @@ body.nav-open .nav-toggle::after {
   
   /* ===== SEÇÃO DENTISTAS ===== */
   .dentistas {
-  padding: 3px 0; /* O original era 80px */
+  padding: 60px 0; /* O original era 80px */
   }
   .dentistas-content {
     flex-direction: column;
