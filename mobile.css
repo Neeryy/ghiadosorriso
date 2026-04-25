@@ -1,0 +1,449 @@
+/* =================================================== */
+/* ARQUIVO DE ESTILO MOBILE
+/* (Para telas de 768px ou menores)
+/* =================================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== CORREÇÕES DE PERFORMANCE (Mobile) ===== */
+  
+  .beneficio-card::before,
+  .depoimento::before {
+    display: none;
+  }
+  
+  .hero-text h1 {
+    animation: none !important;
+    background: #004aad !important;
+    -webkit-text-fill-color: #004aad !important;
+  }
+  
+  body.loaded .btn-primary,
+  body.loaded .btn-cta-primary {
+    animation: none;
+  }
+
+  /* ===== HEADER E MENU HAMBÚRGUER ===== */
+  
+  .header-content {
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+  }
+  
+  .logo {
+    width: 120px;
+    z-index: 1003; 
+  }
+
+/* --- Estilo do Botão Hambúrguer --- */
+  
+.nav-toggle {
+    display: block; 
+    position: relative;
+    width: 28px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+    padding: 0;
+    margin: 0;
+    margin: 8px 16px;
+}
+
+.nav-toggle::before,
+.nav-toggle::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #007bff; 
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    padding: 0; 
+}
+
+.nav-toggle .bi-list {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #007bff; 
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0; 
+    color: transparent;
+    padding: 0; 
+}
+.nav-toggle .bi-list::before {
+    display: none;
+}
+.nav-toggle::before { top: 0; }
+.nav-toggle::after { bottom: 0; }
+
+/* --- Animação do 'X' quando o menu está aberto --- */
+body.nav-open .nav-toggle::before {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+body.nav-open .nav-toggle .bi-list {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+body.nav-open .nav-toggle::after {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+}
+  
+  /* --- Menu deslizante (Nav) --- */
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%; 
+    max-width: 300px;
+    height: 100vh; 
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 80px 20px 20px;
+    gap: 15px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%); 
+    transition: transform 0.3s ease-out;
+    z-index: 1001;
+  }
+
+  .nav a {
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    width: 100%;
+    box-sizing: border-box; 
+  }
+
+  /* --- Overlay (fundo escuro) --- */
+  .nav-overlay {
+    display: block; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none; 
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+  }
+
+  /* --- Estilos do Menu Aberto (via classe 'nav-open' no body) --- */
+  
+  body.nav-open {
+    overflow: hidden; /* Trava a rolagem */
+  }
+  
+  body.nav-open .nav {
+    transform: translateX(0); 
+  }
+
+  body.nav-open .nav-overlay {
+    opacity: 1;
+    pointer-events: auto; 
+  }
+
+  
+  /* ===== HERO SECTION ===== */
+  
+  .hero-image,
+  .mulher-sorrindo,
+  .hero-decorative {
+    display: none !important; 
+  }
+  
+  .hero {
+    padding-top: 20px;
+    min-height: auto;
+  }
+  
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 20px;
+    gap: 32px;
+  }
+
+  .hero-text {
+    left: 0; 
+    width: 100%;
+    padding: 0;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero-text p {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    /* ALINHAMENTO: Centraliza os botões */
+    align-items: center; 
+  }
+  
+  /* ===== SEÇÃO SOBRE ===== */
+  .sobre {
+    padding: 60px 0;
+  }
+  .sobre-content {
+    flex-direction: column;
+    /* ALINHAMENTO: Centraliza a imagem e o texto */
+    align-items: center;
+  }
+  .sobre-text {
+    /* MUDANÇA AQUI: Alinha o texto à esquerda */
+    text-align: left;
+  }
+  .sobre-text ul {
+    /* MUDANÇA AQUI: Remove o 'display: inline-block' que era para centralizar */
+    display: block; 
+    text-align: left; 
+    padding-left: 20px !important; /* Mantém o recuo da lista */
+  }
+  .sobre-title,
+  .sobre h2 {
+    font-size: 1.8rem;
+  }
+  .sobre-description,
+  .sobre p,
+  .sobre li {
+    font-size: 1rem;
+  }
+  .sobre-img {
+    max-width: 100%;
+  }
+  
+  /* ===== SEÇÃO BENEFÍCIOS ===== */
+  .beneficios-grid {
+    grid-template-columns: 1fr; 
+  }
+  .beneficio-card {
+    /* ALINHAMENTO: Centraliza o conteúdo dos cards */
+    text-align: center;
+  }
+  .beneficio-card-header {
+    /* ALINHAMENTO: Empilha o ícone e o título */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* ===== SEÇÃO DENTISTAS ===== */
+  .dentistas {
+  padding: 60px 0; /* O original era 80px */
+  }
+  .dentistas-content {
+    flex-direction: column;
+    gap: 40px;
+    /* ALINHAMENTO: Centraliza os blocos */
+    align-items: center;
+  }
+  .dentistas-text {
+    /* ALINHAMENTO: Centraliza o texto */
+    text-align: center;
+  }
+  .dentistas-list li {
+    /* ALINHAMENTO: Empilha ícone e texto */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+.dentistas-image {
+    min-width: 100%;
+    width: 100%;
+    height: auto;
+    order: -1; 
+    
+    /* ESSAS 3 LINHAS CENTRALIZAM A IMAGEM */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .dentistas-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* ===== SEÇÃO EMPRESAS ===== */
+  .empresas {
+  padding: 3px 0 0; /* O original era 100px */
+  }
+  .empresas-content {
+    flex-direction: column;
+    align-items: center; /* Já estava correto */
+  }
+  .empresas-text {
+    /* ALINHAMENTO: Centraliza o texto */
+    text-align: center;
+  }
+  .empresas-lista li {
+    /* ALINHAMENTO: Empilha ícone e texto */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px; /* Adiciona espaço entre ícone e texto */
+  }
+  .empresas-card {
+    display: none; 
+  }
+  
+  /* ===== SEÇÃO SERVIÇOS ===== */
+  .servicos-wrapper {
+    flex-direction: column;
+    /* ALINHAMENTO: Centraliza os blocos */
+    align-items: center;
+  }
+  .servicos-left-content {
+    /* ALINHAMENTO: Centraliza o texto */
+    text-align: center;
+  }
+  .servico-item {
+    /* ALINHAMENTO: Empilha ícone e texto */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px; /* Adiciona espaço entre ícone e texto */
+  }
+/* AQUI ESTÁ A CORREÇÃO (no seletor) */
+  .servicos-right-content.image-column {
+    order: -1; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.main-image-placeholder {
+    text-align: center; /* Anula o 'text-align: right' do desktop */
+  }
+  
+  .main-image-placeholder img {
+    margin: 0 auto;
+  }
+
+  /* ================================================
+  AQUI ESTÁ A NOVA REGRA
+  ================================================
+  */
+.main-image-placeholder {
+    /* Anula o text-align: right do style.css */
+    text-align: center;
+    /* Centraliza a imagem (que é um display: block) */
+    margin: 0 auto;
+  }
+  
+  /* ===== SEÇÃO DEPOIMENTOS (VERSÃO STEPPER JS) ===== */
+  
+  .depoimentos-wrapper {
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .depoimentos-grid {
+    width: auto; 
+    flex-wrap: nowrap; 
+    gap: 0; 
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .depoimento {
+    flex: 1 0 0;
+    max-width: none;
+    box-sizing: border-box;
+    padding: 0 20px; /* Espaçamento lateral */
+  }
+  
+  .depoimento.cloned-node {
+     display: none; 
+  }
+  
+  /* ===== SEÇÃO CTA FINAL ===== */
+  /* Esta seção já é centralizada por padrão */
+  .cta-negocio-section h1 {
+    font-size: 2em;
+  }
+  .cta-buttons {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  .cta-buttons a {
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+  }
+  .features-list {
+    flex-direction: column; 
+    align-items: center;
+    gap: 10px;
+  }
+  
+/* ===== FOOTER ===== */
+  .footer-content {
+    flex-direction: column;
+    gap: 35px;
+    align-items: center;
+  }
+  
+  .footer-content .footer-col:nth-child(2),
+  .footer-content .footer-col:nth-child(3) {
+    display: none;
+  }
+  
+  .footer-col {
+    min-width: 100%;
+    text-align: center;
+  }
+
+  /* ================================================
+  AQUI ESTÁ A NOVA REGRA:
+  Centraliza os <li> de contato
+  ================================================
+  */
+  .col-contact .contact-item {
+    justify-content: center; /* Centraliza o ícone + texto como um bloco */
+  }
+
+  .col-info {
+    max-width: 100%;
+  }
+  .social-icons {
+    justify-content: center;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  .copyright {
+    margin-bottom: 0;
+  }
+  .legal-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
