@@ -184,7 +184,6 @@ body.loaded {
   padding: 16px 0;
   position: relative;
   z-index: 3;
-  left: 20%;
 }
 
 body:not(.loaded) .hero-text {
@@ -359,6 +358,55 @@ body.loaded .hero-image{
 
 
 /* ===== RESPONSIVO ===== */
+
+/* Desktop médio e notebooks largos (~1400px) */
+@media (max-width: 1400px) {
+  .hero-text {
+    left: 0;
+  }
+
+  .hero-image {
+    min-width: 480px;
+    height: 500px;
+  }
+
+  .mulher-sorrindo {
+    height: clamp(520px, 75vh, 780px);
+    transform: translateY(90px);
+  }
+
+  .hero-decorative {
+    width: 600%;
+    bottom: 0;
+  }
+}
+
+/* Notebooks menores (~1200px) */
+@media (max-width: 1200px) {
+  .hero-content {
+    gap: 30px;
+  }
+
+  .hero-text {
+    left: 0;
+  }
+
+  .hero-image {
+    min-width: 440px;
+    height: 480px;
+  }
+
+  .mulher-sorrindo {
+    height: clamp(500px, 75vh, 780px);
+    transform: translateY(100px);
+  }
+
+  .hero-decorative {
+    width: 500%;
+    bottom: 0;
+  }
+}
+
 @media (max-width: 1024px) {
   .hero-content {
     flex-direction: row;
@@ -1116,6 +1164,7 @@ body.loaded .hero-image{
   z-index: 1;
   object-fit: cover;
   opacity: 0.9;
+  pointer-events: none;
 }
 
 .texto-box {
@@ -2122,6 +2171,13 @@ section {
   
   html {
     scroll-behavior: auto;
+  }
+}
+
+/* Telas ultrawide (34" e acima, a partir de 2560px) */
+@media (min-width: 2560px) {
+  .hero-content {
+    gap: 210px;
   }
 }
 
